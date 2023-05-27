@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,7 +43,7 @@ public class OdevScript : MonoBehaviour
     [ContextMenu(nameof(SartYapisi))]
     public void SartYapisi()
     {
-        var resultRandomNumber = Random.Range(0, 500);
+        var resultRandomNumber = UnityEngine.Random.Range(0, 500);
 
         if (resultRandomNumber < 250)
         {
