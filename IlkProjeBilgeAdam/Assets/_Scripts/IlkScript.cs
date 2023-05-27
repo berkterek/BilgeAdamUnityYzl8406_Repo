@@ -38,7 +38,7 @@ public class IlkScript : MonoBehaviour
 
         //Local Degisken veya local variable
         //value icine Hello World Again! string degerini atadim.
-        string value = "Hello World Again!"; 
+        string value = "Hello World Again!";
         Debug.Log(value); //value icindeki degeri Debug.Log icinde yazdirdim 
         value = value + " " + "Hello Again and Again"; //value degerini maniple ettim ve birseyler ekledim => "Hello World Again! Hello Again and Again"
         Debug.Log(value); //ayni value degerini debug.Log icinde yazdirdim
@@ -67,6 +67,29 @@ public class IlkScript : MonoBehaviour
         Debug.Log(Vector2);
         Debug.Log(Vector3);
         Debug.Log(OrnekString);
+
+        //if tap tap size hizli if yazimi verir
+        //ctrl K +D
+        if (true)
+        {
+            if (true)
+            {
+                if (true)
+                {
+
+
+
+                }
+            }
+
+            if (true)
+            {
+
+            }
+        }
+
+
+
     }
 
     void Method()
