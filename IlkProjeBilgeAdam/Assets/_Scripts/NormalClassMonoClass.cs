@@ -45,6 +45,22 @@ public class NormalClassMonoClass : MonoBehaviour
 
         Debug.Log("Database server'a bilgiler gonderildi");
     }
+
+    [ContextMenu(nameof(MusteriOlsutur))]
+    public void MusteriOlsutur()
+    {
+        //bu sekilde de instance yazilir scope icine direkt crtl + space bastignizda butun property'leri gorebilirsiniz daha kolay bir yazimdir
+        Musteri musteri = new Musteri
+        {
+            Isim = InputIsim,
+            Soyisim = InputSoyisim,
+            Yasi = InputYasi,
+            ErkekMi = false,
+            ZenginMi = true
+        };
+
+        Debug.Log(musteri.Isim);
+    }
 }
 
 /*
@@ -63,10 +79,25 @@ public class NormalClass : Insan
     }
 }
 
+/*
+ *
+ * Access Modifier denir erisim belirtecleridir bir yapinin method field veya class'in ne kadar esirileblir veya erisilemez oldugnu bu yapilar belirler. public ve private miras al ve islemlerinde protected
+ *
+ * public
+ * public su demektir en erisleblir her yerden erisileblir demektir bir yapi public olursa bir class veya method icinde baska bir method veya class artik neyse o rahatllikla erisebilr anlamina gelir
+ *
+ * private
+ * private en erislisemezdir en kapalidir bir yapi private ise sadece yazildigi veya olusturuldugu class icerisinde erisleblir demektir disaridan erisislemez demektir
+ *
+ * protected
+ * protected private'in bir tik acik versiyonudur private'dan farki sudur private sadece olsutugu class icinde erisileblirdir proptected ise sadece olustugu ve miras verilen class icerisinde erisleblirdir onun disinda erisilemezdir
+ * 
+ */
+
 public class Insan
 {
     //isim field ve bizi field'lairmizi direkt acmayiz bir method veya property uzerinden field'larimiza disaridan eristitirz veya disidan data aliriz bunun nedeni giren cikan datayi kontrol edebilmek icindir bunun adina encapsulation yani kapsulleme yontemi denir
-    private string _isim;
+    protected string _isim;
     private string _soyisim;
     
     //property ozellik demektir biz kendi class'larimiza property atariz ozellik atariz property methodlarin bir gelismisidir kisacasi
@@ -116,3 +147,8 @@ public class Calisan : Insan /*,NormalClass //hatali islem bir class birden fazl
 }
 
 //bir class olusturun ve bu class insandan miras alsin adi musteri olsun ZenginMi
+public class Musteri : Insan
+{
+    //prop tap tap
+    public bool ZenginMi { get; set; }
+}
