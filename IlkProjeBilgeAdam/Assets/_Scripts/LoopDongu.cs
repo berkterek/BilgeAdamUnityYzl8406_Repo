@@ -1,13 +1,55 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LoopDongu : MonoBehaviour
 {
+    //Array ve List yapisi inspector uzerinde kullanilaiblin yapilardir
+    public GameObject[] OrnekArray;
+
+    public List<GameObject> ListObjects;
     //loop dongu demektir
     //dongu kendini tekrar eden ve arka arkaya olmasini istedigimzi islemleri yapmamizi saglayan yapdir
-
+    
+    
     private void Start()
+    {
+        //List yapimiz bizim arrayden sonra oyun dunyasinda kullnadigmiz en yayigin collection yapimizdir list'in calisma mantigi ayni array gibidir farki daha esnek olmasi array tek seferde aldigi kapasitesini listte yaptigmizda burda bu alan genisler
+        
+        List<string> listString = new List<string>();
+        //Add method'u ile listimizi genisletebilriz yeni verileri atayabilirz
+        listString.Add("Istanbul");
+        listString.Add("Ankara");
+        listString.Add("Izmir");
+
+        foreach (string list in listString)
+        {
+            Debug.Log(list);
+        }
+        
+        listString.Add("Adana");
+
+        foreach (var list in listString)
+        {
+            Debug.Log(list);
+        }
+    }
+
+    private void ArrayOrnek()
+    {
+        //Array'^ler bzim en ilkel collection yapimizdir ama en hizli collection yapisi oldugnu soyleyebilriz
+        //Ilkellikten kastmiz sudur bir kere olusurlar ve bu olusum sonucu bizden alan acmamizi isterler 5 alan actigmizda bu arraya biz 5 deger atayabilirz 6. atadigimzda hata verir esnek bir yapi degildir
+        
+        string[] ornekArray1 = new string[3] { "Ankara", "Izmir", "Istanbul" };
+
+        //burdaki [] icine yazdigmiz numara index numarasidir ve index'ler 0'dan baslar
+        Debug.Log(ornekArray1[0]); //Ankara => 1
+        Debug.Log(ornekArray1[1]); //Izmir => 2
+        Debug.Log(ornekArray1[2]); //Istanbul => 3
+
+        ornekArray1[3] = "Adana";
+    }
+
+    private void LoopsVeArrayGiris()
     {
         //int i = 0;
         //i++;
