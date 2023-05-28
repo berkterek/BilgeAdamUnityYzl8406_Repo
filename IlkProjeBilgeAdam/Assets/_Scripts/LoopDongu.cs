@@ -15,7 +15,7 @@ public class LoopDongu : MonoBehaviour
     {
         //List yapimiz bizim arrayden sonra oyun dunyasinda kullnadigmiz en yayigin collection yapimizdir list'in calisma mantigi ayni array gibidir farki daha esnek olmasi array tek seferde aldigi kapasitesini listte yaptigmizda burda bu alan genisler
         
-        List<string> listString = new List<string>();
+        List<string> listString = new List<string>(); //instance ornegini almak
         //Add method'u ile listimizi genisletebilriz yeni verileri atayabilirz
         listString.Add("Istanbul");
         listString.Add("Ankara");

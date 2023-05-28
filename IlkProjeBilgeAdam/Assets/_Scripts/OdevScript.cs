@@ -148,4 +148,9 @@ public class OdevScript : MonoBehaviour
         }
         
     }
+
+    public void OrnekMethod()
+    {
+        Debug.Log("Ornek Method Calisti");
+    }
 }
