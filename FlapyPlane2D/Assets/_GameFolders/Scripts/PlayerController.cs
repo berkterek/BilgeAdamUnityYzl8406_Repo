@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameManager _gameManager;
     public Transform _bodyTransform;
     public float _jumpForce = 100f;
     public float _angleSpeed = 5f;
@@ -38,6 +39,9 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(Time.deltaTime);
 
         _bodyTransform.localEulerAngles += -1f * _angleSpeed * Time.deltaTime * Vector3.forward;
+        // float zAngle = _bodyTransform.localEulerAngles.z;
+        // float maxZAngle = Mathf.Max(zAngle, _negativeAngle);
+        // _bodyTransform.localEulerAngles = new Vector3(0f, 0f, maxZAngle);
     }
 
     //Fizik islmelerimizi FixedUpdate ile yapariz
@@ -52,5 +56,17 @@ public class PlayerController : MonoBehaviour
             _isJump = false;
             Debug.Log("Player is Jumping right now");
         }
+    }
+
+    //OnCollissionEnter2D 2d fizik motoru icin calisir ve iki nesne carpistiginda duvar etkisi yarattiginda ilk dokunma icin calir
+    // void OnCollisionEnter2D(Collision2D other)
+    // {
+    //     Debug.Log(nameof(OnCollisionEnter2D));
+    // }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log(nameof(OnTriggerEnter2D));
+        _gameManager.GameOverProcess();
     }
 }
