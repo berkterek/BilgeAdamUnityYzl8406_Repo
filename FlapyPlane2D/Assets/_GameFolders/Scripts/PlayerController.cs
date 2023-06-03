@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Transform _bodyTransform;
     public float _jumpForce = 100f;
-    
+    public float _angleSpeed = 5f;
+    public float _positiveAngle = 60f;
+    public float _negativeAngle = -80f;
+
     Rigidbody2D _rigidbody2D;
     bool _isJump;
 
@@ -23,7 +27,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player can jump");
             _isJump = true;
         }
-        
+
         //bu yapi calismaz hep false'a doner cunku Update her bir frame'de bir calistigi icin bir kere true olucak daha FixedUpdate calismadan _isJump tekrar false olucak bundan dolayi bu kod calismaz
         // _isJump = Input.GetButtonDown("Jump");
         //
@@ -31,7 +35,9 @@ public class PlayerController : MonoBehaviour
         // {
         //     Debug.Log("Player can jump");
         // }
-        Debug.Log(Time.deltaTime);
+        //Debug.Log(Time.deltaTime);
+
+        _bodyTransform.localEulerAngles += -1f * _angleSpeed * Time.deltaTime * Vector3.forward;
     }
 
     //Fizik islmelerimizi FixedUpdate ile yapariz
@@ -42,6 +48,7 @@ public class PlayerController : MonoBehaviour
         {
             _rigidbody2D.velocity = Vector2.zero;
             _rigidbody2D.AddForce(_jumpForce * Time.deltaTime * Vector2.up); //y = 1 / 1*0.15
+            _bodyTransform.localEulerAngles = new Vector3(0f, 0f, _positiveAngle);
             _isJump = false;
             Debug.Log("Player is Jumping right now");
         }
