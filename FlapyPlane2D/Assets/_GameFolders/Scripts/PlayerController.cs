@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameManager _gameManager;
-    public Transform _bodyTransform;
-    public float _jumpForce = 100f;
-    public float _angleSpeed = 5f;
-    public float _positiveAngle = 60f;
-    public float _negativeAngle = -80f;
+    [SerializeField] GameManager _gameManager;
+    [SerializeField] Transform _bodyTransform;
+    [SerializeField] float _jumpForce = 100f;
+    [SerializeField] float _angleSpeed = 5f;
+    [SerializeField] float _positiveAngle = 60f;
+    [SerializeField] float _negativeAngle = -80f;
 
     Rigidbody2D _rigidbody2D;
     bool _isJump;
@@ -64,9 +64,24 @@ public class PlayerController : MonoBehaviour
     //     Debug.Log(nameof(OnCollisionEnter2D));
     // }
 
+    //OnTriggerEnter2D tetiklenen taraf burda player cunku bu method suan player script icinde yazildigi icin bu method'un parametresi Collider2D other ise karsi tarafin bilgisini barindirir yani paramtereyle gelen bilgi karsi tarafin bilgisidir
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(nameof(OnTriggerEnter2D));
-        _gameManager.GameOverProcess();
+        // Debug.Log(nameof(OnTriggerEnter2D));
+        // _gameManager.GameOverProcess();
+
+        //ScoreController bziim player'in score'unu arttirmasina yariyan script'tir. burda yaptigmiz islem carpisma aninda colldier uzerinden o gameobject'in uzerinde ScoreController cek demis olduk if icinde eger score controller null degilse biz uzerinde scorecontroller olan bir game object ile carpismis olduk anlamina gelir ve score'u arttirma yapmamiz gerekir eger null ise biz uzerinde ScoreController olmayan bir game object ile carpismis olduk ve burda ona gore islem yaptirmamiz gerekir.
+        ScoreController scoreController = other.GetComponent<ScoreController>();
+        if (scoreController != null)
+        {
+            //score arttir
+            //burdaki ornekte biz score'a bir deger atamamamiz lazimdir ki field eger public olursa onceki ornekte oldugu gibi biz deger atayabilir hale getiremis oluruz ki bu encapsulation prensipine aykiridir bunun icin biz field'larimizi private veya protected olarak belirletiz ki disaridan direkt erisim olmasin diye
+            //scoreController._score = 50;
+            _gameManager.PlayerScore += scoreController.Score;
+        }
+        else
+        {
+            _gameManager.GameOverProcess();
+        }
     }
 }
