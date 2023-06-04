@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StaticEnemyVisualController : MonoBehaviour
+public class StaticVisualMovementController : MonoBehaviour
 {
     public float _speed = 1f;
     public SpriteRenderer[] _spriteRenderers;
