@@ -38,10 +38,10 @@ public class PlayerController : MonoBehaviour
         // }
         //Debug.Log(Time.deltaTime);
 
-        _bodyTransform.localEulerAngles += -1f * _angleSpeed * Time.deltaTime * Vector3.forward;
-        // float zAngle = _bodyTransform.localEulerAngles.z;
-        // float maxZAngle = Mathf.Max(zAngle, _negativeAngle);
-        // _bodyTransform.localEulerAngles = new Vector3(0f, 0f, maxZAngle);
+        _bodyTransform.eulerAngles += -1f * _angleSpeed * Time.deltaTime * Vector3.forward;
+        // float zAngle = _bodyTransform.eulerAngles.z;
+        // float maxZAngle = Mathf.Clamp(zAngle,0f, _negativeAngle);
+        // _bodyTransform.eulerAngles = new Vector3(0f, 0f, maxZAngle);
     }
 
     //Fizik islmelerimizi FixedUpdate ile yapariz
