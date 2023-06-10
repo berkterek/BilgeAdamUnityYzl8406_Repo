@@ -3,7 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int PlayerScore = 0;
+    [SerializeField] int _playerScore = 0;
+
+    public int PlayerScore
+    {
+        get => _playerScore;
+        set => _playerScore = value;
+    }
     
     void Awake()
     {
