@@ -42,4 +42,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1f;
     }
+
+    public void Exit()
+    {
+        //Application Quit method bizim oyunu tamamen kapatmamizi saglar suan calismamaktadir cunku simdi biz bu kodu unity editor uzerinde calistiriyoruz oyunun kendisi acik degildir bundan dolayi calismaz ama oyunu build alip acitigimizda ve quit method'unu calistiridigmizda oyundan ciktigini goruruz.
+        Debug.Log(nameof(Exit));
+        Application.Quit();
+    }
 }
