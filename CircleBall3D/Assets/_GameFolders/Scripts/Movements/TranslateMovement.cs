@@ -48,6 +48,12 @@ namespace CircleBall3D.Movements
         public void FixedTick()
         {
             _rigidbody.AddForce(_direction);
+
+            const float maxVelocityMagnitude = 10f;
+            if (_rigidbody.velocity.magnitude > maxVelocityMagnitude)
+            {
+                _rigidbody.velocity = _rigidbody.velocity.normalized * maxVelocityMagnitude;
+            }
         }
     }
 
