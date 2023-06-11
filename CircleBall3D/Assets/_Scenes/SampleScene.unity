@@ -196,6 +196,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 858398303609547482, guid: 3a3d607b934798949a907b74a1bb82de,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 858398305571060657, guid: 3a3d607b934798949a907b74a1bb82de,
+        type: 3}
+      propertyPath: m_Name
+      value: Body
+      objectReference: {fileID: 0}
+    - target: {fileID: 858398305571060659, guid: 3a3d607b934798949a907b74a1bb82de,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 54f97bced0c6bee48b6488898ff252e4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a3d607b934798949a907b74a1bb82de, type: 3}
 --- !u!1001 &3100186767693646683
@@ -403,5 +418,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameArenaLevel1
       objectReference: {fileID: 0}
+    - target: {fileID: 5148653882300389810, guid: aaae2301553af1a4eaa4baa30c1dfc9c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 224d16450afe6664795df98946bd14c9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaae2301553af1a4eaa4baa30c1dfc9c, type: 3}
