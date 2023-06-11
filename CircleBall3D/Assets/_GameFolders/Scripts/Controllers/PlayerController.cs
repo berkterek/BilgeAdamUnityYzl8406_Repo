@@ -10,23 +10,41 @@ namespace CircleBall3D.Controllers
         [SerializeField] float _moveSpeed = 1f;
 
         InputReader _inputReader;
-        TranslateMovement _translateMovement;
+        IMovement _mover;
 
         void Awake()
         {
             _inputReader = new InputReader();
-            _translateMovement = new TranslateMovement(transform);
+            _mover = new RigidbodyAddForceMovement(transform);
         }
 
         void Update()
         {
-            _translateMovement.Tick(Time.deltaTime*_moveSpeed*_inputReader.Direction);
+            _mover.Tick(Time.deltaTime * _moveSpeed * _inputReader.Direction);
         }
 
         void FixedUpdate()
         {
-            _translateMovement.FixedTick();
+            _mover.FixedTick();
         }
-    }    
-}
 
+        int _index = 0;
+
+        [ContextMenu(nameof(ChangeMovement))]
+        public void ChangeMovement()
+        {
+            _index++;
+
+            if (_index % 2 == 0)
+            {
+                _mover = new TranslateMovement(transform);
+                Debug.Log(nameof(TranslateMovement));
+            }
+            else
+            {
+                _mover = new RigidbodyAddForceMovement(transform);
+                Debug.Log(nameof(RigidbodyAddForceMovement));
+            }
+        }
+    }
+}
