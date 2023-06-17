@@ -6,10 +6,9 @@ namespace CircleBall3D.Controllers
 {
     public class EnemyController : MonoBehaviour
     {
+        [SerializeField] EnemyStatsSO _enemyStats;
         [SerializeField] Transform _target;
         [SerializeField] Animator _animator;
-        [SerializeField] float _stopDistance = 2f;
-        [SerializeField] float _moveSpeed = 5f;
 
         IMovement _mover;
 
@@ -19,8 +18,7 @@ namespace CircleBall3D.Controllers
             {
                 Animator = _animator,
                 Transform = this.transform,
-                StopDistance = _stopDistance,
-                MoveSpeed = _moveSpeed
+                Stats = _enemyStats
             });
         }
 
@@ -40,8 +38,7 @@ namespace CircleBall3D.Controllers
     public struct NavmeshAgentMovementData
     {
         public Transform Transform { get; set; }
-        public float StopDistance { get; set; }
         public Animator Animator { get; set; }
-        public float MoveSpeed { get; set; }
+        public EnemyStatsSO Stats { get; set; }
     }
 }

@@ -62,24 +62,25 @@ namespace CircleBall3D.Movements
     public class NavmeshAgentMovement : IMovement
     {
         readonly NavMeshAgent _navMeshAgent;
-        readonly float _stopDistance = 2f;
         readonly Animator _animator;
+        readonly EnemyStatsSO _stats;
 
         Vector3 _direction;
         
         public NavmeshAgentMovement(NavmeshAgentMovementData data)
         {
             _navMeshAgent = data.Transform.GetComponent<NavMeshAgent>();
-            _navMeshAgent.speed = data.MoveSpeed;
-            _stopDistance = data.StopDistance;
+            _stats = data.Stats;
             _animator = data.Animator;
         }
         
         public void Tick(Vector3 direction)
         {
+            SetSpeeds();
+            
             _direction = direction;
 
-            if (_navMeshAgent.remainingDistance < _stopDistance)
+            if (_navMeshAgent.remainingDistance < _stats.StopDistance)
             {
                 _navMeshAgent.isStopped = true;
             }
@@ -88,12 +89,22 @@ namespace CircleBall3D.Movements
                 _navMeshAgent.isStopped = false;
             }
             
+            //Enemy Animator icindeki MoveLocomotion MoveVelocity paramtresine navmesh agent icinden gelen movement hizi ve max hizi bolup 0 ile 1 arasinda bir deger aldik ve bu degeri MoveVelocity paramtresine gonderdik bu yapi cunku 0 ile 1 degerini alir bunu yaptigmizda yurume ile animasyon senkron bir sekilde calismis oldu 
             _animator.SetFloat("MoveVelocity",Mathf.Clamp01(_navMeshAgent.velocity.magnitude / _navMeshAgent.speed));
         }
 
         public void FixedTick()
         {
             _navMeshAgent.SetDestination(_direction);
+        }
+
+        private void SetSpeeds()
+        {
+            if (_stats.MoveSpeed.Equals(_navMeshAgent.speed) &&
+                _stats.AngularSpeed.Equals(_navMeshAgent.angularSpeed)) return;
+            
+            _navMeshAgent.speed = _stats.MoveSpeed;
+            _navMeshAgent.angularSpeed = _stats.AngularSpeed;
         }
     }
 
