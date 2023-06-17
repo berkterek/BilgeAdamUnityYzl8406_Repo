@@ -9,7 +9,7 @@ namespace CircleBall3D.Movements
         float _moveSpeed = 5f;
 
         Vector3 _direction;
-    
+
         //bu class olusma aninda bir transform ister kimin oldugu onemli degildir
         public TranslateMovement(Transform transform)
         {
@@ -29,7 +29,7 @@ namespace CircleBall3D.Movements
         }
     }
 
-    public class RigidbodyAddForceMovement: IMovement
+    public class RigidbodyAddForceMovement : IMovement
     {
         readonly Rigidbody _rigidbody;
 
@@ -50,6 +50,7 @@ namespace CircleBall3D.Movements
             _rigidbody.AddForce(_direction);
 
             const float maxVelocityMagnitude = 10f;
+            Debug.Log(_rigidbody.velocity.magnitude);
             if (_rigidbody.velocity.magnitude > maxVelocityMagnitude)
             {
                 _rigidbody.velocity = _rigidbody.velocity.normalized * maxVelocityMagnitude;
@@ -65,4 +66,3 @@ namespace CircleBall3D.Movements
         void FixedTick();
     }
 }
-
