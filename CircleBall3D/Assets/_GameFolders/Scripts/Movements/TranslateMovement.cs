@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace CircleBall3D.Movements
 {
@@ -50,11 +51,42 @@ namespace CircleBall3D.Movements
             _rigidbody.AddForce(_direction);
 
             const float maxVelocityMagnitude = 10f;
-            Debug.Log(_rigidbody.velocity.magnitude);
             if (_rigidbody.velocity.magnitude > maxVelocityMagnitude)
             {
                 _rigidbody.velocity = _rigidbody.velocity.normalized * maxVelocityMagnitude;
             }
+        }
+    }
+
+    public class NavmeshAgentMovement : IMovement
+    {
+        readonly NavMeshAgent _navMeshAgent;
+        readonly float _stopDistance = 2f;
+
+        Vector3 _direction;
+        
+        public NavmeshAgentMovement(Transform transform)
+        {
+            _navMeshAgent = transform.GetComponent<NavMeshAgent>();
+        }
+        
+        public void Tick(Vector3 direction)
+        {
+            _direction = direction;
+
+            if (_navMeshAgent.remainingDistance < _stopDistance)
+            {
+                _navMeshAgent.isStopped = true;
+            }
+            else
+            {
+                _navMeshAgent.isStopped = false;
+            }
+        }
+
+        public void FixedTick()
+        {
+            _navMeshAgent.SetDestination(_direction);
         }
     }
 
