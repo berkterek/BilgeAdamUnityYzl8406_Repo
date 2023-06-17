@@ -142,26 +142,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 527569671505510716, guid: 6997a9d7e84d8be4a8e5853bdf0ba4c4,
-        type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5886874344363580230, guid: 6997a9d7e84d8be4a8e5853bdf0ba4c4,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5886874344363580230, guid: 6997a9d7e84d8be4a8e5853bdf0ba4c4,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5886874344363580230, guid: 6997a9d7e84d8be4a8e5853bdf0ba4c4,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5
-      objectReference: {fileID: 0}
+    - target: {fileID: 1304109762, guid: 6997a9d7e84d8be4a8e5853bdf0ba4c4, type: 3}
+      propertyPath: _target
+      value: 
+      objectReference: {fileID: 1715091848}
     - target: {fileID: 6212953711525364753, guid: 6997a9d7e84d8be4a8e5853bdf0ba4c4,
         type: 3}
       propertyPath: m_Name
@@ -944,49 +928,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 088301b9869a9d447a2110a03d196a80, type: 3}
---- !u!1 &1304109760 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6212953711525364753, guid: 6997a9d7e84d8be4a8e5853bdf0ba4c4,
-    type: 3}
-  m_PrefabInstance: {fileID: 206145570}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1304109762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1304109760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44b187a4907dca44584dcefe1c661577, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _target: {fileID: 1715091848}
-  _maxStopDistance: 2
-  _navMeshAgent: {fileID: 1304109763}
---- !u!195 &1304109763
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1304109760}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!4 &1543705050 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4359984851669709888, guid: 088301b9869a9d447a2110a03d196a80,

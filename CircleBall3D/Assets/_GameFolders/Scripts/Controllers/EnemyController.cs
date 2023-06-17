@@ -7,7 +7,6 @@ namespace CircleBall3D.Controllers
     public class EnemyController : MonoBehaviour
     {
         [SerializeField] Transform _target;
-        [SerializeField] NavMeshAgent _navMeshAgent;
 
         IMovement _mover;
 
