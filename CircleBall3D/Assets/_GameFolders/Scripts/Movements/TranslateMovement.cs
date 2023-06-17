@@ -1,3 +1,4 @@
+using CircleBall3D.Controllers;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -62,12 +63,16 @@ namespace CircleBall3D.Movements
     {
         readonly NavMeshAgent _navMeshAgent;
         readonly float _stopDistance = 2f;
+        readonly Animator _animator;
 
         Vector3 _direction;
         
-        public NavmeshAgentMovement(Transform transform)
+        public NavmeshAgentMovement(NavmeshAgentMovementData data)
         {
-            _navMeshAgent = transform.GetComponent<NavMeshAgent>();
+            _navMeshAgent = data.Transform.GetComponent<NavMeshAgent>();
+            _navMeshAgent.speed = data.MoveSpeed;
+            _stopDistance = data.StopDistance;
+            _animator = data.Animator;
         }
         
         public void Tick(Vector3 direction)
@@ -82,6 +87,8 @@ namespace CircleBall3D.Movements
             {
                 _navMeshAgent.isStopped = false;
             }
+            
+            _animator.SetFloat("MoveVelocity",Mathf.Clamp01(_navMeshAgent.velocity.magnitude / _navMeshAgent.speed));
         }
 
         public void FixedTick()

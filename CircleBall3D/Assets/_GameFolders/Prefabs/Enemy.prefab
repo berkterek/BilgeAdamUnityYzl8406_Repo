@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _navMeshAgent: {fileID: 1304109763}
+  _animator: {fileID: 527569671505510716}
 --- !u!195 &1304109763
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -164,6 +164,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f62a496080cbc5429715f049ac63b85, type: 3}
+--- !u!95 &527569671505510716 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 6f62a496080cbc5429715f049ac63b85,
+    type: 3}
+  m_PrefabInstance: {fileID: 6212953712166157485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5886874344363580230 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6f62a496080cbc5429715f049ac63b85,
