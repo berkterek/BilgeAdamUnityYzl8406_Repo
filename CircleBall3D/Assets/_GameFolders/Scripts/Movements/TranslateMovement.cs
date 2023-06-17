@@ -1,4 +1,5 @@
 using CircleBall3D.Controllers;
+using CircleBall3D.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.AI;
 

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 //SO scriptable object oldugnu temsil eder
@@ -12,14 +9,22 @@ using UnityEngine;
 //fileName biz bir yeni bir scriptable object olsuturdugmuzda bu dosyanin olusma adidir.
 //menuName ise bizim scriptable object'leri nasil oluturcagimizin dosya yoludur
 //burda biz dosya tarafina sag tikladimizda en ustte Create goruruz ve Create icinde en tepede Bilge Adam Akademi secenegini gormus olucaz ve o bizi stats yonlendircek stats icinde de Enemy Stats yazisini gorucez tikladigmizda New Enemy Stats olusturmus olucaz
-[CreateAssetMenu(fileName = "New Enemy Stats",menuName = "Bilge Adam Akademi/Stats/Enemy Stats")]
-public class EnemyStatsSO : ScriptableObject
+namespace CircleBall3D.ScriptableObjects
 {
-    [SerializeField] float _stopDistance = 2f;
-    [SerializeField] float _moveSpeed = 5f;
-    [SerializeField] float _angularSpeed = 120f;
+    [CreateAssetMenu(fileName = "New Enemy Stats",menuName = "Bilge Adam Akademi/Stats/Enemy Stats")]
+    public class EnemyStatsSO : ScriptableObject
+    {
+        [SerializeField] int _damage = 10;
+        [SerializeField] float _minAttackRate = 1.5f;
+        [SerializeField] float _maxAttackRate = 3f;
+        [SerializeField] float _stopDistance = 2f;
+        [SerializeField] float _moveSpeed = 5f;
+        [SerializeField] float _angularSpeed = 120f;
 
-    public float MoveSpeed => _moveSpeed;
-    public float AngularSpeed => _angularSpeed;
-    public float StopDistance => _stopDistance;
+        public float MoveSpeed => _moveSpeed;
+        public float AngularSpeed => _angularSpeed;
+        public float StopDistance => _stopDistance;
+        public int Damage => _damage;
+        public float RandomAttackRate => Random.Range(_minAttackRate, _maxAttackRate);
+    }    
 }

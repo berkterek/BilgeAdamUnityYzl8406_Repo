@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: be2b315314056df4da9a41773a9bc223, type: 2}
+--- !u!1 &91021694 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 858398303609547482, guid: 3a3d607b934798949a907b74a1bb82de,
+    type: 3}
+  m_PrefabInstance: {fileID: 858398304526809621}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &96145897 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4359984851669709888, guid: 088301b9869a9d447a2110a03d196a80,
@@ -1183,6 +1189,19 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 858398304526809621}
   m_PrefabAsset: {fileID: 0}
+--- !u!135 &1715091852
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91021694}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1768077624 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4359984851669709888, guid: 088301b9869a9d447a2110a03d196a80,
