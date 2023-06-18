@@ -7,6 +7,7 @@ namespace CircleBall3D.Managers
         public static GameManager Instance { get; private set; }
 
         public event System.Action OnLevelCompleted;
+        public event System.Action OnGameOvered;
 
         void Awake()
         {
@@ -36,6 +37,7 @@ namespace CircleBall3D.Managers
         public void GameOver()
         {
             Debug.Log("Game Overed");
+            OnGameOvered?.Invoke();
         }
     }   
 }

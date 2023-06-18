@@ -1,12 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using CircleBall3D.Managers;
 using UnityEngine;
 
 namespace CircleBall3D.Controllers
 {
-    public class CanvasGroupController : MonoBehaviour
+    public abstract class BaseCanvasGroupController : MonoBehaviour
     {
         [SerializeField] CanvasGroup _canvasGroup;
 
@@ -20,22 +16,12 @@ namespace CircleBall3D.Controllers
             }
         }
 
-        void OnEnable()
-        {
-            GameManager.Instance.OnLevelCompleted += HandleOnLevelCompleted;
-        }
-
-        void OnDisable()
-        {
-            GameManager.Instance.OnLevelCompleted -= HandleOnLevelCompleted;
-        }
-        
-        void HandleOnLevelCompleted()
+        protected void SetActiveCanvasGroup()
         {
             _canvasGroup.alpha = 1f;
             _canvasGroup.interactable = true;
             _canvasGroup.blocksRaycasts = true;
         }
-    }    
+    }
 }
 
