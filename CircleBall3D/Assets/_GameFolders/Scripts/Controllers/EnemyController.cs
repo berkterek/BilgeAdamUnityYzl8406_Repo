@@ -94,7 +94,7 @@ namespace CircleBall3D.Controllers
             {
                 //yield return null Update mantigiyla ayni 1 frame bekle demektir
                 yield return new WaitForSeconds(_enemyStats.RandomAttackRate);
-                playerController.TakeHit(_enemyStats.Damage);
+                playerController.Health.TakeHit(_enemyStats.Damage);
             }
         }
         

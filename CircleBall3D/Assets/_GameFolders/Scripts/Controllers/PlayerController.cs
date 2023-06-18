@@ -1,3 +1,4 @@
+using CircleBall3D.Combats;
 using CircleBall3D.Inputs;
 using CircleBall3D.Managers;
 using CircleBall3D.Movements;
@@ -16,17 +17,18 @@ namespace CircleBall3D.Controllers
         InputReader _inputReader;
         IMovement _mover;
         bool _canMove = true;
-        float _currentHealth;
+
+        public Health Health { get; private set; }
 
         void Awake()
         {
             _inputReader = new InputReader();
             _mover = new RigidbodyAddForceMovement(transform);
-        }
-
-        void Start()
-        {
-            _currentHealth = _maxHealth;
+            Health = new Health(new HealthData()
+            {
+                MaxHealth = _maxHealth,
+                HealthBarImage = _healthBarImage
+            });
         }
 
         void OnEnable()
@@ -49,12 +51,6 @@ namespace CircleBall3D.Controllers
         void FixedUpdate()
         {
             _mover.FixedTick();
-        }
-
-        public void TakeHit(int damage)
-        {
-            _currentHealth -= damage;
-            _healthBarImage.fillAmount = _currentHealth / _maxHealth;
         }
         
         void HandleOnLevelCompleted()

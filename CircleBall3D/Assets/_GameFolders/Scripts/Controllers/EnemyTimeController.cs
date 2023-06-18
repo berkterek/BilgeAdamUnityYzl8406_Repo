@@ -46,7 +46,7 @@ namespace CircleBall3D.Controllers
 
             if (_currentTime <= 0f)
             {
-                _playerController.TakeHit(_damage);
+                _playerController.Health.TakeHit(_damage);
                 _isDone = true;
                 _fillerImage.fillAmount = 0f;
             }

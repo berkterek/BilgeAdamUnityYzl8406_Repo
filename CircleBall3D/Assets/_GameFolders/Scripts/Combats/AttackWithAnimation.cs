@@ -1,14 +1,18 @@
 using CircleBall3D.Controllers;
 using UnityEngine;
 
-public class AttackWithAnimation : MonoBehaviour
+namespace CircleBall3D.Combats
 {
-    [SerializeField] EnemyController _enemyController;
-
-    //Attack method'u animasyon event'i ile calisir
-    //Animation event ise Attack animsyonuna cift tikladiginizda cizgi halinde gorursunuz 
-    public void Attack()
+    public class AttackWithAnimation : MonoBehaviour
     {
-        _enemyController.PlayerController.TakeHit(_enemyController.Stats.Damage);
-    }
+        [SerializeField] EnemyController _enemyController;
+
+        //Attack method'u animasyon event'i ile calisir
+        //Animation event ise Attack animsyonuna cift tikladiginizda cizgi halinde gorursunuz 
+        public void Attack()
+        {
+            _enemyController.PlayerController.Health.TakeHit(_enemyController.Stats.Damage);
+        }
+    }    
 }
+
