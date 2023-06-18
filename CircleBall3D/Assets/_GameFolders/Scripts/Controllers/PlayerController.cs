@@ -2,23 +2,31 @@ using CircleBall3D.Inputs;
 using CircleBall3D.Managers;
 using CircleBall3D.Movements;
 using UnityEngine;
+using UnityEngine.UI;
 
 //namespace ile biz kodlarimizi daha duzgun duzenleyebilriz ayni UnityEngine namespace veya System gibi dosya yollarini bizde bu sekil belirtebillriz namespace'ler ile
 namespace CircleBall3D.Controllers
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] int _health = 100;
+        [SerializeField] Image _healthBarImage;
+        [SerializeField] int _maxHealth = 100;
         [SerializeField] float _moveSpeed = 1f;
 
         InputReader _inputReader;
         IMovement _mover;
         bool _canMove = true;
+        float _currentHealth;
 
         void Awake()
         {
             _inputReader = new InputReader();
             _mover = new RigidbodyAddForceMovement(transform);
+        }
+
+        void Start()
+        {
+            _currentHealth = _maxHealth;
         }
 
         void OnEnable()
@@ -45,7 +53,8 @@ namespace CircleBall3D.Controllers
 
         public void TakeHit(int damage)
         {
-            _health -= damage;
+            _currentHealth -= damage;
+            _healthBarImage.fillAmount = _currentHealth / _maxHealth;
         }
         
         void HandleOnLevelCompleted()
