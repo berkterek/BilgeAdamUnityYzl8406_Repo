@@ -1,4 +1,3 @@
-using System;
 using CircleBall3D.Enums;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +6,7 @@ namespace CircleBall3D.Managers
 {
     public class GameManager : MonoBehaviour
     {
+        [SerializeField] int _maxLevel = 3;
         [SerializeField] int _currentLevel = 1;
 
         public static GameManager Instance { get; private set; }
@@ -56,17 +56,16 @@ namespace CircleBall3D.Managers
                     SceneManager.LoadScene("Level" + _currentLevel);
                     break;
                 case SceneEnum.Level:
-                    // _currentLevel++;
-                    // int index = _currentLevel - 1;
-                    // var scene = SceneManager.GetSceneAt(index);
-                    // if (scene.IsValid())
-                    // {
-                    //     SceneManager.LoadScene("Level" + _currentLevel);
-                    // }
-                    // else
-                    // {
-                    //     _currentLevel = 1;
-                    // }
+                    _currentLevel++;
+                    if (_currentLevel <= _maxLevel)
+                    {
+                        SceneManager.LoadScene("Level" + _currentLevel);
+                    }
+                    else
+                    {
+                        _currentLevel = 1;
+                        SceneManager.LoadScene("Level" + _currentLevel);
+                    }
                     break;
             }
         }
