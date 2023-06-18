@@ -13,6 +13,8 @@ namespace CircleBall3D.Controllers
 
         IMovement _mover;
         Coroutine _attackCoroutine;
+        public PlayerController PlayerController { get; private set; }
+        public EnemyStatsSO Stats => _enemyStats;
 
         void Awake()
         {
@@ -53,7 +55,9 @@ namespace CircleBall3D.Controllers
             if (other.TryGetComponent(out PlayerController playerController))
             {
                 Debug.Log("Enemy can hit player");
-                _attackCoroutine = StartCoroutine(HitAsync(playerController));
+                // _attackCoroutine = StartCoroutine(HitAsync(playerController));
+                PlayerController = playerController;
+                _animator.SetBool("IsAttacking",true);
             }
         }
 
@@ -64,13 +68,15 @@ namespace CircleBall3D.Controllers
             if (other.TryGetComponent(out PlayerController playerController))
             {
                 Debug.Log("Enemy can not hit player");
-                if (_attackCoroutine != null)
-                {
-                    StopCoroutine(_attackCoroutine);    
-                }
+                // if (_attackCoroutine != null)
+                // {
+                //     StopCoroutine(_attackCoroutine);    
+                // }
+                
+                _animator.SetBool("IsAttacking",false);
             }
         }
-
+        
         private IEnumerator HitAsync(PlayerController playerController)
         {
             while (true)
