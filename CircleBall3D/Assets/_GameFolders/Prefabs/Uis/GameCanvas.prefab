@@ -244,6 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1040694505}
   - component: {fileID: 1040694506}
+  - component: {fileID: 8431250232006925066}
   m_Layer: 5
   m_Name: NextLevelPanel
   m_TagString: Untagged
@@ -285,6 +286,18 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &8431250232006925066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040694504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99b4f9b390c3427408708917aaaca883, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1114535971
 GameObject:
   m_ObjectHideFlags: 0
