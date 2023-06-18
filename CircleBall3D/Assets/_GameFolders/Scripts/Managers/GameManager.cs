@@ -27,10 +27,15 @@ namespace CircleBall3D.Managers
             }
         }
 
-        public void LevelCompleted()
+        public void LevelComplete()
         {
             Debug.Log("Level Completed");
             OnLevelCompleted?.Invoke();
+        }
+
+        public void GameOver()
+        {
+            Debug.Log("Game Overed");
         }
     }   
 }

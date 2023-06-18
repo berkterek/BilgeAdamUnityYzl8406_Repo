@@ -34,11 +34,13 @@ namespace CircleBall3D.Controllers
         void OnEnable()
         {
             GameManager.Instance.OnLevelCompleted += HandleOnLevelCompleted;
+            Health.OnDead += HandleOnDead;
         }
 
         void OnDisable()
         {
             GameManager.Instance.OnLevelCompleted -= HandleOnLevelCompleted;
+            Health.OnDead -= HandleOnDead;
         }
 
         void Update()
@@ -56,6 +58,12 @@ namespace CircleBall3D.Controllers
         void HandleOnLevelCompleted()
         {
             _canMove = false;
+        }
+        
+        void HandleOnDead()
+        {
+            _canMove = false;
+            GameManager.Instance.GameOver();
         }
 
         #region Interface Ornek

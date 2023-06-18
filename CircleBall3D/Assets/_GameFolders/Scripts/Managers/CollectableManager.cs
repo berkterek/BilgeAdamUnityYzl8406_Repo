@@ -41,7 +41,7 @@ namespace CircleBall3D.Managers
 
             if (_currentScore >= _maxScore)
             {
-                GameManager.Instance.LevelCompleted();
+                GameManager.Instance.LevelComplete();
             }
         }
     }    
