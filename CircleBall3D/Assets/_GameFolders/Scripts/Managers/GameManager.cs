@@ -1,9 +1,14 @@
+using System;
+using CircleBall3D.Enums;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CircleBall3D.Managers
 {
     public class GameManager : MonoBehaviour
     {
+        [SerializeField] int _currentLevel = 1;
+
         public static GameManager Instance { get; private set; }
 
         public event System.Action OnLevelCompleted;
@@ -19,7 +24,7 @@ namespace CircleBall3D.Managers
         {
             if (Instance == null)
             {
-                Instance = this;    
+                Instance = this;
                 DontDestroyOnLoad(this.gameObject);
             }
             else
@@ -39,5 +44,31 @@ namespace CircleBall3D.Managers
             Debug.Log("Game Overed");
             OnGameOvered?.Invoke();
         }
-    }   
+
+        public void LoadSceneByEnum(SceneEnum sceneEnum)
+        {
+            switch (sceneEnum)
+            {
+                case SceneEnum.Menu:
+                    SceneManager.LoadScene("Menu");
+                    break;
+                case SceneEnum.Restart:
+                    SceneManager.LoadScene("Level" + _currentLevel);
+                    break;
+                case SceneEnum.Level:
+                    // _currentLevel++;
+                    // int index = _currentLevel - 1;
+                    // var scene = SceneManager.GetSceneAt(index);
+                    // if (scene.IsValid())
+                    // {
+                    //     SceneManager.LoadScene("Level" + _currentLevel);
+                    // }
+                    // else
+                    // {
+                    //     _currentLevel = 1;
+                    // }
+                    break;
+            }
+        }
+    }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 129122877}
   - component: {fileID: 129122876}
   - component: {fileID: 129122875}
+  - component: {fileID: 2884964365200036908}
   m_Layer: 5
   m_Name: NextLevelButton
   m_TagString: Untagged
@@ -121,6 +122,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2884964365200036908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129122873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33df448e42868d2459f6086029c06b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneEnum: 2
+  _button: {fileID: 129122875}
 --- !u!1 &313725234
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,6 +186,7 @@ GameObject:
   - component: {fileID: 438503893}
   - component: {fileID: 438503892}
   - component: {fileID: 438503891}
+  - component: {fileID: 547654828}
   m_Layer: 5
   m_Name: 'MenuButton '
   m_TagString: Untagged
@@ -280,6 +296,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &547654828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438503889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33df448e42868d2459f6086029c06b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneEnum: 0
+  _button: {fileID: 438503891}
 --- !u!1 &501276535
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,6 +322,7 @@ GameObject:
   - component: {fileID: 501276539}
   - component: {fileID: 501276538}
   - component: {fileID: 501276537}
+  - component: {fileID: 2884964365200036906}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -401,6 +432,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2884964365200036906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501276535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33df448e42868d2459f6086029c06b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneEnum: 1
+  _button: {fileID: 501276537}
 --- !u!1 &656438828
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,6 +838,7 @@ GameObject:
   - component: {fileID: 1630608898}
   - component: {fileID: 1630608897}
   - component: {fileID: 1630608896}
+  - component: {fileID: 2884964365200036907}
   m_Layer: 5
   m_Name: 'MenuButton '
   m_TagString: Untagged
@@ -902,6 +948,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2884964365200036907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630608894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33df448e42868d2459f6086029c06b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneEnum: 0
+  _button: {fileID: 1630608896}
 --- !u!1 &1633971234
 GameObject:
   m_ObjectHideFlags: 0
