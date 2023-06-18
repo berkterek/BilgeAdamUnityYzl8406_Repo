@@ -1,4 +1,5 @@
 using CircleBall3D.Inputs;
+using CircleBall3D.Managers;
 using CircleBall3D.Movements;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace CircleBall3D.Controllers
 
         InputReader _inputReader;
         IMovement _mover;
+        bool _canMove = true;
 
         void Awake()
         {
@@ -19,8 +21,20 @@ namespace CircleBall3D.Controllers
             _mover = new RigidbodyAddForceMovement(transform);
         }
 
+        void OnEnable()
+        {
+            GameManager.Instance.OnLevelCompleted += HandleOnLevelCompleted;
+        }
+
+        void OnDisable()
+        {
+            GameManager.Instance.OnLevelCompleted -= HandleOnLevelCompleted;
+        }
+
         void Update()
         {
+            if (!_canMove) return;
+            
             _mover.Tick(Time.deltaTime * _moveSpeed * _inputReader.Direction);
         }
 
@@ -32,6 +46,11 @@ namespace CircleBall3D.Controllers
         public void TakeHit(int damage)
         {
             _health -= damage;
+        }
+        
+        void HandleOnLevelCompleted()
+        {
+            _canMove = false;
         }
 
         #region Interface Ornek
