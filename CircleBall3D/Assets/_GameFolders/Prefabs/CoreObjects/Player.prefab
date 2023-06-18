@@ -189,6 +189,7 @@ GameObject:
   - component: {fileID: 2070212969}
   - component: {fileID: 2070212971}
   - component: {fileID: 2070212970}
+  - component: {fileID: 2070212972}
   m_Layer: 0
   m_Name: HealthbarBackground
   m_TagString: Untagged
@@ -255,6 +256,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2070212972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070212968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d13035f2b0b23734483b9427b4c02198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 2070212969}
 --- !u!1 &858398303609547482
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c3099e634bc404aadd2d189c4eb2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthBarImage: {fileID: 0}
+  _healthBarImage: {fileID: 1384564890}
   _maxHealth: 100
   _moveSpeed: 2000
 --- !u!135 &1715091852
