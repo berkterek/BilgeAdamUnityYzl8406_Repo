@@ -8,7 +8,6 @@ namespace CircleBall3D.Controllers
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] int _health = 100;
-        [SerializeField] int _playerScore = 0;
         [SerializeField] float _moveSpeed = 1f;
 
         InputReader _inputReader;
@@ -28,11 +27,6 @@ namespace CircleBall3D.Controllers
         void FixedUpdate()
         {
             _mover.FixedTick();
-        }
-        
-        public void IncreaseScore(int score)
-        {
-            _playerScore += score;
         }
 
         public void TakeHit(int damage)
