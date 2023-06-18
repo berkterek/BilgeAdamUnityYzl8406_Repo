@@ -1,4 +1,5 @@
 using System.Collections;
+using CircleBall3D.Managers;
 using CircleBall3D.Movements;
 using CircleBall3D.ScriptableObjects;
 using UnityEngine;
@@ -24,6 +25,16 @@ namespace CircleBall3D.Controllers
                 Transform = this.transform,
                 Stats = _enemyStats
             });
+        }
+
+        void OnEnable()
+        {
+            GameManager.Instance.OnLevelCompleted += HandleOnLevelCompleted;
+        }
+
+        void OnDisable()
+        {
+            GameManager.Instance.OnLevelCompleted -= HandleOnLevelCompleted;
         }
 
         void Update()
@@ -85,6 +96,11 @@ namespace CircleBall3D.Controllers
                 yield return new WaitForSeconds(_enemyStats.RandomAttackRate);
                 playerController.TakeHit(_enemyStats.Damage);
             }
+        }
+        
+        void HandleOnLevelCompleted()
+        {
+            Destroy(this.gameObject);
         }
 
         #region Coroutine Senktron Asenkron

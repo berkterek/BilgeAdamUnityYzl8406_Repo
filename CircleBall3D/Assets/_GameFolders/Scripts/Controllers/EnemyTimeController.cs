@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using CircleBall3D.Managers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +13,7 @@ namespace CircleBall3D.Controllers
         [SerializeField] Image _fillerImage;
 
         float _currentTime = 0f;
-        bool _isAttackCompleted = false;
+        bool _isDone = false;
         PlayerController _playerController;
 
         //Start method'u normal bir void ile yazilablir ve ayni zamanda IEnumerator yani corutine olarakta yazilablir bir ozel method'tur bu sadece unity hazir methodlari arasinda Start icin gecerlidir
@@ -26,9 +28,19 @@ namespace CircleBall3D.Controllers
             Debug.Log("EnemyTimeController Start method'u bekledi ve calisti");
         }
 
+        void OnEnable()
+        {
+            GameManager.Instance.OnLevelCompleted += HandleOnLevelCompleted;
+        }
+
+        void OnDisable()
+        {
+            GameManager.Instance.OnLevelCompleted -= HandleOnLevelCompleted;
+        }
+
         void Update()
         {
-            if (_isAttackCompleted) return;
+            if (_isDone) return;
             
             _currentTime -= Time.deltaTime;
             _fillerImage.fillAmount = _currentTime / _levelPlayMaxTime;
@@ -36,9 +48,14 @@ namespace CircleBall3D.Controllers
             if (_currentTime <= 0f)
             {
                 _playerController.TakeHit(_damage);
-                _isAttackCompleted = true;
+                _isDone = true;
                 _fillerImage.fillAmount = 0f;
             }
+        }
+        
+        void HandleOnLevelCompleted()
+        {
+            _isDone = true;
         }
     }
 }
