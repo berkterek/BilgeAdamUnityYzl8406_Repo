@@ -8,6 +8,7 @@ namespace CircleBall3D.Combats
     {
         [SerializeField] EnemyController _enemyController;
         [SerializeField] GameObject _particleFx;
+        [SerializeField] AudioSource _audioSource;
 
         //Attack method'u animasyon event'i ile calisir
         //Animation event ise Attack animsyonuna cift tikladiginizda cizgi halinde gorursunuz 
@@ -15,6 +16,7 @@ namespace CircleBall3D.Combats
         {
             StartCoroutine(PlayFxAsync());
             _enemyController.PlayerController.Health.TakeHit(_enemyController.Stats.Damage);
+            _audioSource.Play();
         }
 
         private IEnumerator PlayFxAsync()
