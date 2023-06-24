@@ -9,6 +9,7 @@ namespace CircleBall3D.Enums
     {
         Menu,
         Restart,
-        Level
+        Level,
+        Start
     }    
 }

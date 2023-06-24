@@ -1,3 +1,4 @@
+using System;
 using CircleBall3D.Enums;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,6 +18,11 @@ namespace CircleBall3D.Managers
         void Awake()
         {
             Singleton();
+        }
+
+        void Start()
+        {
+            _currentLevel = 0;
         }
 
         //singleton pattern bir design patterndir ve diger design pattern'lerle ayni mantiktadir yani kaliplasmias sorunlarin kaliplasmis cozumudur burda bir singleton yontemi kullaniyoruz mantigi sudur static bir instance icinde ilk gelen referansi tutuyoruz ve eger Instance null ise ilk referansi sakla ve oyun sonuna kadar onu kullan demis olduk unity game engine kullandigimz icin burda hersey game object uzerinden yurur ve burda bir singleton mantigi kullandimizdan ayni seyi o referansi saklayan GameObject icinde yapariz DontDestroyOnLoad method'u o game object'in butun oyun boyunca saklanacaigni ifade eder else icine gelicek olursa yeni olucan GameObject'leri yok et dmeis olduk boylelikle hem class referansi olarak hemde game object olarak bir tekillik yakalamis olduk.
@@ -67,7 +73,17 @@ namespace CircleBall3D.Managers
                         SceneManager.LoadScene("Level" + _currentLevel);
                     }
                     break;
+                case SceneEnum.Start:
+                    _currentLevel = 1;
+                    SceneManager.LoadScene("Level" + _currentLevel);
+                    break;
             }
+        }
+
+        public void ExitGame()
+        {
+            Debug.Log($"{nameof(ExitGame)} Triggered");
+            Application.Quit();
         }
     }
 }
