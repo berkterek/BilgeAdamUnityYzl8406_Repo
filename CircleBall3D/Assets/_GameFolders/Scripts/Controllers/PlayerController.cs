@@ -13,6 +13,7 @@ namespace CircleBall3D.Controllers
         [SerializeField] Image _healthBarImage;
         [SerializeField] int _maxHealth = 100;
         [SerializeField] float _moveSpeed = 1f;
+        [SerializeField] Rigidbody _rigidbody;
 
         InputReader _inputReader;
         IMovement _mover;
@@ -24,6 +25,7 @@ namespace CircleBall3D.Controllers
         {
             _inputReader = new InputReader();
             _mover = new RigidbodyAddForceMovement(transform);
+            _rigidbody = GetComponent<Rigidbody>();
             Health = new Health(new HealthData()
             {
                 MaxHealth = _maxHealth,
@@ -52,18 +54,22 @@ namespace CircleBall3D.Controllers
 
         void FixedUpdate()
         {
+            if (!_canMove) return;
+            
             _mover.FixedTick();
         }
         
         void HandleOnLevelCompleted()
         {
             _canMove = false;
+            _rigidbody.velocity = Vector3.zero;
         }
         
         void HandleOnDead()
         {
             _canMove = false;
             GameManager.Instance.GameOver();
+            _rigidbody.velocity = Vector3.zero;
         }
 
         #region Interface Ornek

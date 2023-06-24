@@ -1,4 +1,5 @@
 using CircleBall3D.Controllers;
+using CircleBall3D.Managers;
 using CircleBall3D.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.AI;
@@ -41,6 +42,11 @@ namespace CircleBall3D.Movements
         public RigidbodyAddForceMovement(Transform transform)
         {
             _rigidbody = transform.GetComponent<Rigidbody>();
+        }
+
+        void HandleFinished()
+        {
+            _rigidbody.velocity = Vector3.zero;
         }
 
         public void Tick(Vector3 direction)
