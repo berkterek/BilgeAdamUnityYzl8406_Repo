@@ -5,6 +5,9 @@ namespace CircleBall3D.Controllers
     public class CollectableController : MonoBehaviour
     {
         [SerializeField] int _score = 1;
+        [SerializeField] GameObject _fxObject;
+        [SerializeField] GameObject _bodyObject;
+        [SerializeField] Collider _collider;
 
         public event System.Action<int> OnCollected;
         public int Score => _score;
@@ -14,8 +17,10 @@ namespace CircleBall3D.Controllers
             var player = other.GetComponent<PlayerController>();
             if (player != null)
             {
+                _collider.enabled = false;
                 OnCollected?.Invoke(_score);
-                gameObject.SetActive(false);
+                _bodyObject.SetActive(false);
+                _fxObject.SetActive(true);
             }
         }
     }    
