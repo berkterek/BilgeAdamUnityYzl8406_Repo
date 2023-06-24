@@ -8,6 +8,7 @@ namespace CircleBall3D.Controllers
         [SerializeField] GameObject _fxObject;
         [SerializeField] GameObject _bodyObject;
         [SerializeField] Collider _collider;
+        [SerializeField] AudioSource _audioSource;
 
         public event System.Action<int> OnCollected;
         public int Score => _score;
@@ -21,6 +22,7 @@ namespace CircleBall3D.Controllers
                 OnCollected?.Invoke(_score);
                 _bodyObject.SetActive(false);
                 _fxObject.SetActive(true);
+                _audioSource.Play();
             }
         }
     }    
