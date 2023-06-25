@@ -11,17 +11,20 @@ namespace SpaceShipWars2D.Controllers
         [SerializeField] float _moveSpeed = 5f;
         
         IMover _mover;
+        IMovementBorder _movementBorder;
         IInputReader _inputReader;
 
         void Awake()
         {
             _inputReader = new InputReaderNormal();
-            _mover = new MoveWithTransform(this.transform);
+            _mover = new MoveWithTranslate(this.transform);
+            _movementBorder = new MovementBorderForTransform(this.transform);
         }
 
         void Update()
         {
             _mover.Tick(_moveSpeed * Time.deltaTime * _inputReader.Direction);
+            _movementBorder.Tick();
         }
 
         void FixedUpdate()
