@@ -1,15 +1,15 @@
-using SpaceShipWars2D.Abstracts.Movements;
+﻿using SpaceShipWars2D.Abstracts.Movements;
 using UnityEngine;
 
 namespace SpaceShipWars2D.Movements
 {
-    public class MoveWithTranslate : IMover
+    public class MoveWithTransform : IMover
     {
         readonly Transform _transform;
-        
+
         Vector3 _movement;
-        
-        public MoveWithTranslate(Transform transform)
+
+        public MoveWithTransform(Transform transform)
         {
             _transform = transform;
         }
@@ -21,8 +21,7 @@ namespace SpaceShipWars2D.Movements
 
         public void FixedTick()
         {
-            _transform.Translate(_movement);
+            _transform.position += _movement;
         }
     }
 }
-
