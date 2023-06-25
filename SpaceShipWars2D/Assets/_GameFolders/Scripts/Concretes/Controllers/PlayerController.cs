@@ -1,4 +1,6 @@
+using SpaceShipWars2D.Abstracts.Inputs;
 using SpaceShipWars2D.Abstracts.Movements;
+using SpaceShipWars2D.Inputs;
 using SpaceShipWars2D.Movements;
 using UnityEngine;
 
@@ -6,6 +8,7 @@ namespace SpaceShipWars2D.Controllers
 {
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField] float _moveSpeed = 5f;
         /*
          *  ---------------------Odev---------------------
          *  1.Input burda alip _mover ile kullanmak sag sol asagi yukari islemleri
@@ -17,15 +20,17 @@ namespace SpaceShipWars2D.Controllers
          */
         
         IMover _mover;
+        IInputReader _inputReader;
 
         void Awake()
         {
+            _inputReader = new InputReaderNormal();
             _mover = new MoveWithTranslate(this.transform);
         }
 
         void Update()
         {
-            _mover.Tick(Time.deltaTime*Vector2.up);
+            _mover.Tick(_moveSpeed * Time.deltaTime * _inputReader.Direction);
         }
 
         void FixedUpdate()
