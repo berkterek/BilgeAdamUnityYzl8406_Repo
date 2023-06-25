@@ -1,18 +1,27 @@
+using System;
 using SpaceShipWars2D.Abstracts.Inputs;
 using SpaceShipWars2D.Abstracts.Movements;
 using SpaceShipWars2D.Inputs;
 using SpaceShipWars2D.Movements;
+using SpaceShipWars2D.ScriptableObjects;
 using UnityEngine;
 
 namespace SpaceShipWars2D.Controllers
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] float _moveSpeed = 5f;
+        [SerializeField] Sprite[] _spites;
+        [SerializeField] SpriteRenderer _spriteRenderer;
+        [SerializeField] PlayerStatsSO _playerStats;
         
         IMover _mover;
         IMovementBorder _movementBorder;
         IInputReader _inputReader;
+
+        void OnValidate()
+        {
+            if (_spriteRenderer == null) _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        }
 
         void Awake()
         {
@@ -23,13 +32,29 @@ namespace SpaceShipWars2D.Controllers
 
         void Update()
         {
-            _mover.Tick(_moveSpeed * Time.deltaTime * _inputReader.Direction);
+            _mover.Tick(_playerStats.MoveSpeed * Time.deltaTime * _inputReader.Direction);
             _movementBorder.Tick();
         }
 
         void FixedUpdate()
         {
             _mover.FixedTick();
+        }
+
+        void LateUpdate()
+        {
+            if (_inputReader.Direction.x < 0f)
+            {
+                _spriteRenderer.sprite = _spites[1];
+            }
+            else if (_inputReader.Direction.x > 0f)
+            {
+                _spriteRenderer.sprite = _spites[2];
+            }
+            else
+            {
+                _spriteRenderer.sprite = _spites[0];
+            }
         }
     }    
 }
