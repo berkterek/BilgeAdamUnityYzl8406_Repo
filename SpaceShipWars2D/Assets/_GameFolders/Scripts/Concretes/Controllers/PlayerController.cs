@@ -1,4 +1,3 @@
-using System;
 using SpaceShipWars2D.Abstracts.Inputs;
 using SpaceShipWars2D.Abstracts.Movements;
 using SpaceShipWars2D.Inputs;
@@ -10,13 +9,14 @@ namespace SpaceShipWars2D.Controllers
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] Sprite[] _spites;
+        [SerializeField] Sprite[] _sprites;
         [SerializeField] SpriteRenderer _spriteRenderer;
         [SerializeField] PlayerStatsSO _playerStats;
         
         IMover _mover;
         IMovementBorder _movementBorder;
         IInputReader _inputReader;
+        IAnimationController _animation;
 
         void OnValidate()
         {
@@ -28,12 +28,18 @@ namespace SpaceShipWars2D.Controllers
             _inputReader = new InputReaderNormal();
             _mover = new MoveWithTranslate(this.transform);
             _movementBorder = new MovementBorderForTransform(this.transform);
+            _animation = new PlayerAnimationWithSprite(new PlayerAnimationWithSpriteData()
+            {
+                Sprites = _sprites,
+                SpriteRenderer = _spriteRenderer
+            });
         }
 
         void Update()
         {
             _mover.Tick(_playerStats.MoveSpeed * Time.deltaTime * _inputReader.Direction);
             _movementBorder.Tick();
+            _animation.Tick(_inputReader.Direction.x);
         }
 
         void FixedUpdate()
@@ -43,18 +49,7 @@ namespace SpaceShipWars2D.Controllers
 
         void LateUpdate()
         {
-            if (_inputReader.Direction.x < 0f)
-            {
-                _spriteRenderer.sprite = _spites[1];
-            }
-            else if (_inputReader.Direction.x > 0f)
-            {
-                _spriteRenderer.sprite = _spites[2];
-            }
-            else
-            {
-                _spriteRenderer.sprite = _spites[0];
-            }
+            _animation.LateTick();
         }
     }    
 }
