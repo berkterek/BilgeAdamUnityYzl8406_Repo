@@ -3,7 +3,7 @@ using UnityEngine;
 namespace SpaceShipWars2D.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "New Laser Stats", menuName = "Bilge Adam/Stats/Laser Stats")]
-    public class LaserStatsSO : ScriptableObject
+    public class LaserStatsSO : ScriptableObject, IMovementStats
     {
         [SerializeField] float _moveSpeed = 10f;
         [SerializeField] bool _isGoingUp;

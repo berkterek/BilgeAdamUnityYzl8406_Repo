@@ -19,8 +19,6 @@ namespace SpaceShipWars2D.Controllers
         IInputReader _inputReader;
         IAnimationController _animation;
 
-        float _currentRate = 0f;
-
         void OnValidate()
         {
             if (_spriteRenderer == null) _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -29,7 +27,11 @@ namespace SpaceShipWars2D.Controllers
         void Awake()
         {
             _inputReader = new InputReaderNormal();
-            _mover = new MoveWithTranslate(this.transform);
+            _mover = new MoveWithTranslate(new MovementData()
+            {
+                Transform = this.transform,
+                MovementStats = _playerStats
+            });
             _movementBorder = new MovementBorderForTransform(this.transform);
             _animation = new PlayerAnimationWithSprite(new PlayerAnimationWithSpriteData()
             {
@@ -40,17 +42,9 @@ namespace SpaceShipWars2D.Controllers
 
         void Update()
         {
-            _mover.Tick(_playerStats.MoveSpeed * Time.deltaTime * _inputReader.Direction);
+            _mover.Tick(_inputReader.Direction);
             _movementBorder.Tick();
             _animation.Tick(_inputReader.Direction.x);
-
-            _currentRate += Time.deltaTime;
-
-            if (_currentRate > _playerStats.FireRate)
-            {
-                Fire();
-                _currentRate = 0f;
-            }
         }
 
         void FixedUpdate()
@@ -61,12 +55,6 @@ namespace SpaceShipWars2D.Controllers
         void LateUpdate()
         {
             _animation.LateTick();
-        }
-
-        void Fire()
-        {
-            //Instantiate bizim prefab'lerimizi runtime veya editor ama daha cok tercih edilen runtime'dir prefab nesnelerimizi olusturmamizi saglayan method'tur
-            Instantiate(_laserPrefab, transform.position, Quaternion.identity);
         }
     }
 }

@@ -21,12 +21,16 @@ namespace SpaceShipWars2D.Controllers
 
         void Awake()
         {
-            _mover = new MoveWithTransform(_transform);
+            _mover = new MoveWithTransform(new MovementData()
+            {
+                Transform = _transform,
+                MovementStats = _stats
+            });
         }
 
         void Update()
         {
-            _mover.Tick(_stats.MoveSpeed * Time.deltaTime * _stats.OneWayDirection);
+            _mover.Tick(_stats.OneWayDirection);
         }
 
         void FixedUpdate()
