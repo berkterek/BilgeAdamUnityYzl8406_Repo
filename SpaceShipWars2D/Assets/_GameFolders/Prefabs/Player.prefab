@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df238e25b1619904197f7be2a2b80c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spites:
+  _sprites:
   - {fileID: 21300000, guid: b4a7c4d7c7ea8774d856f807418fcfae, type: 3}
   - {fileID: 21300000, guid: d90f0529d943d7b4a93b1f6c78e33de0, type: 3}
   - {fileID: 21300000, guid: 953fb2d9bad7a7b4e90795b2c522ea04, type: 3}
