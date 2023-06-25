@@ -134,10 +134,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerLaser
       objectReference: {fileID: 0}
-    - target: {fileID: 439741631023204079, guid: 8b8a1391d1137e244aeb52a0d3fbe3ec, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 439741631023204080, guid: 8b8a1391d1137e244aeb52a0d3fbe3ec, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -180,10 +176,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 439741631023204080, guid: 8b8a1391d1137e244aeb52a0d3fbe3ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6176208151013359884, guid: 8b8a1391d1137e244aeb52a0d3fbe3ec, type: 3}
-      propertyPath: _isGoingUp
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
