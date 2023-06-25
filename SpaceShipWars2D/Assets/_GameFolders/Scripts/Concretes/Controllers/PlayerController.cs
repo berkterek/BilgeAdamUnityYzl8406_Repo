@@ -9,14 +9,17 @@ namespace SpaceShipWars2D.Controllers
 {
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField] LaserController _laserPrefab;
         [SerializeField] Sprite[] _sprites;
         [SerializeField] SpriteRenderer _spriteRenderer;
         [SerializeField] PlayerStatsSO _playerStats;
-        
+
         IMover _mover;
         IMovementBorder _movementBorder;
         IInputReader _inputReader;
         IAnimationController _animation;
+
+        float _currentRate = 0f;
 
         void OnValidate()
         {
@@ -40,6 +43,14 @@ namespace SpaceShipWars2D.Controllers
             _mover.Tick(_playerStats.MoveSpeed * Time.deltaTime * _inputReader.Direction);
             _movementBorder.Tick();
             _animation.Tick(_inputReader.Direction.x);
+
+            _currentRate += Time.deltaTime;
+
+            if (_currentRate > _playerStats.FireRate)
+            {
+                Fire();
+                _currentRate = 0f;
+            }
         }
 
         void FixedUpdate()
@@ -51,7 +62,13 @@ namespace SpaceShipWars2D.Controllers
         {
             _animation.LateTick();
         }
-    }    
+
+        void Fire()
+        {
+            //Instantiate bizim prefab'lerimizi runtime veya editor ama daha cok tercih edilen runtime'dir prefab nesnelerimizi olusturmamizi saglayan method'tur
+            Instantiate(_laserPrefab, transform.position, Quaternion.identity);
+        }
+    }
 }
 
 /*

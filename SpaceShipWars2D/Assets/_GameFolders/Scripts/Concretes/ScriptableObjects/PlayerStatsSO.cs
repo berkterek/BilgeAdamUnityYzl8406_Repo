@@ -9,8 +9,10 @@ namespace SpaceShipWars2D.ScriptableObjects
     {
         [Tooltip("This movement speed is players movement speed")]
         [SerializeField, Range(1f,10f)] float _moveSpeed = 5f;
+        [SerializeField, Range(0.1f, 2f)] float _fireRate = 0.5f;
 
         public float MoveSpeed => _moveSpeed;
+        public float FireRate => _fireRate;
     }    
 }
 
