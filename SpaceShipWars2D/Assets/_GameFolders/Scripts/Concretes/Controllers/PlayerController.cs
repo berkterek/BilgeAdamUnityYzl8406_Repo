@@ -1,5 +1,7 @@
+using SpaceShipWars2D.Abstracts.Combats;
 using SpaceShipWars2D.Abstracts.Inputs;
 using SpaceShipWars2D.Abstracts.Movements;
+using SpaceShipWars2D.Combats;
 using SpaceShipWars2D.Inputs;
 using SpaceShipWars2D.Movements;
 using SpaceShipWars2D.ScriptableObjects;
@@ -9,7 +11,6 @@ namespace SpaceShipWars2D.Controllers
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] LaserController _laserPrefab;
         [SerializeField] Sprite[] _sprites;
         [SerializeField] SpriteRenderer _spriteRenderer;
         [SerializeField] PlayerStatsSO _playerStats;
@@ -18,6 +19,7 @@ namespace SpaceShipWars2D.Controllers
         IMovementBorder _movementBorder;
         IInputReader _inputReader;
         IAnimationController _animation;
+        IFireHandler _fireHandler;
 
         void OnValidate()
         {
@@ -38,6 +40,11 @@ namespace SpaceShipWars2D.Controllers
                 Sprites = _sprites,
                 SpriteRenderer = _spriteRenderer
             });
+            _fireHandler = new FireHandler(new FireData()
+            {
+                Transform = this.transform,
+                AttackStats = _playerStats
+            });
         }
 
         void Update()
@@ -45,6 +52,7 @@ namespace SpaceShipWars2D.Controllers
             _mover.Tick(_inputReader.Direction);
             _movementBorder.Tick();
             _animation.Tick(_inputReader.Direction.x);
+            _fireHandler.Tick();
         }
 
         void FixedUpdate()

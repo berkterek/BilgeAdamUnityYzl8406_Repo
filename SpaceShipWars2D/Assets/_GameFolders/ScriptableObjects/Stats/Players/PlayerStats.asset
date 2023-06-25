@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
   _moveSpeed: 5
+  _laserPrefab: {fileID: 6176208151013359884, guid: 8b8a1391d1137e244aeb52a0d3fbe3ec, type: 3}
   _fireRate: 0.2
