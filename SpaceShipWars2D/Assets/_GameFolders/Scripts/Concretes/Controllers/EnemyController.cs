@@ -1,3 +1,6 @@
+using System;
+using SpaceShipWars2D.Abstracts.Combats;
+using SpaceShipWars2D.Abstracts.Movements;
 using SpaceShipWars2D.Combats;
 using SpaceShipWars2D.ScriptableObjects;
 using UnityEngine;
@@ -6,26 +9,31 @@ namespace SpaceShipWars2D.Controllers
 {
     public class EnemyController : MonoBehaviour,IEntityController
     {
-        Health _health;
+        [SerializeField] EnemyStats _stats;
         
+        IHealth _health;
+        IFireHandler _fireHandler;
+        IMover _mover;
+
         void Awake()
         {
-            IHealthStats stats = new HealthTestStats();
-            _health = new Health(stats);
-        }
-
-        void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.TryGetComponent(out LaserController laserController))
+            _fireHandler = new FireHandler(new FireData()
             {
-                _health.TakeDamage(laserController.Damage);
-            }
+                Transform = this.transform,
+                AttackStats = _stats
+            });
         }
-    }
 
-    public class HealthTestStats : IHealthStats
-    {
-        public int MaxHealth { get; } = 100;
+        void Update()
+        {
+            //_mover.Tick(Vector3.zero);
+            _fireHandler.Tick();
+        }
+
+        void FixedUpdate()
+        {
+            //_mover.FixedTick();
+        }
     }
 }
 

@@ -10,21 +10,24 @@ namespace SpaceShipWars2D.Combats
         readonly IAttackStats _attackStats;
     
         float _currentRate = 0f;
+        float _currentMaxRate = 0f;
 
         public FireHandler(FireData data)
         {
             _transform = data.Transform;
             _attackStats = data.AttackStats;
+            _currentMaxRate = _attackStats.FireRate;
         }
     
         public void Tick()
         {
             _currentRate += Time.deltaTime;
 
-            if (_currentRate > _attackStats.FireRate)
+            if (_currentRate > _currentMaxRate)
             {
                 Fire();
                 _currentRate = 0f;
+                _currentMaxRate = _attackStats.FireRate;
             }
         }
     
