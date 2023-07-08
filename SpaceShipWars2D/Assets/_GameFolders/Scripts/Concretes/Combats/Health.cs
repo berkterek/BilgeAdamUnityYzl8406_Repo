@@ -9,6 +9,8 @@ namespace SpaceShipWars2D.Combats
         int _currentHealth;
 
         bool IsDead => _currentHealth <= 0;
+
+        public event System.Action OnDead;
         
         public Health(IHealthStats stats)
         {
@@ -26,6 +28,7 @@ namespace SpaceShipWars2D.Combats
             if (IsDead)
             {
                 Debug.Log("Dying");
+                OnDead?.Invoke();
             }
         }
     }
@@ -33,5 +36,6 @@ namespace SpaceShipWars2D.Combats
     public interface IHealth
     {
         void TakeDamage(int damage);
+        event System.Action OnDead;
     }
 }

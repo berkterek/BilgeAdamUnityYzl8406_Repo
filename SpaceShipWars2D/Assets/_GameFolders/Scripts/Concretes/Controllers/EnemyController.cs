@@ -1,4 +1,3 @@
-using System;
 using SpaceShipWars2D.Abstracts.Combats;
 using SpaceShipWars2D.Abstracts.Movements;
 using SpaceShipWars2D.Combats;

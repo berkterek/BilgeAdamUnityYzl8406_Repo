@@ -1,3 +1,4 @@
+using System.Collections;
 using SpaceShipWars2D.Abstracts.Combats;
 using SpaceShipWars2D.Abstracts.Inputs;
 using SpaceShipWars2D.Abstracts.Movements;
@@ -12,6 +13,8 @@ namespace SpaceShipWars2D.Controllers
     public class PlayerController : MonoBehaviour,IEntityController
     {
         [SerializeField] Sprite[] _sprites;
+        [SerializeField] Animator _animator;
+        [SerializeField] GameObject _tailObject;
         [SerializeField] SpriteRenderer _spriteRenderer;
         [SerializeField] PlayerStatsSO _playerStats;
 
@@ -22,9 +25,12 @@ namespace SpaceShipWars2D.Controllers
         IFireHandler _fireHandler;
         IHealth _health;
 
+        bool _isDead = false;
+
         void OnValidate()
         {
             if (_spriteRenderer == null) _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            if (_animator == null) _animator = GetComponentInChildren<Animator>();
         }
 
         void Awake()
@@ -49,8 +55,20 @@ namespace SpaceShipWars2D.Controllers
             });
         }
 
+        void OnEnable()
+        {
+            _health.OnDead += HandleOnDead;
+        }
+
+        void OnDisable()
+        {
+            _health.OnDead -= HandleOnDead;
+        }
+
         void Update()
         {
+            if (_isDead) return;
+            
             _mover.Tick(_inputReader.Direction);
             _movementBorder.Tick();
             _animation.Tick(_inputReader.Direction.x);
@@ -59,12 +77,38 @@ namespace SpaceShipWars2D.Controllers
 
         void FixedUpdate()
         {
+            if (_isDead) return;
+            
             _mover.FixedTick();
         }
 
         void LateUpdate()
         {
+            if (_isDead) return;
+            
             _animation.LateTick();
+        }
+
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            if (!other.TryGetComponent(out LaserController laserController)) return;
+            
+            _health.TakeDamage(laserController.Damage);
+        }
+        
+        void HandleOnDead()
+        {
+            StartCoroutine(DyingAsync());
+        }
+
+        private IEnumerator DyingAsync()
+        {
+            _isDead = true;
+            _animator.SetTrigger("Dying");
+            _tailObject.SetActive(false);
+            _mover.Tick(Vector2.zero);
+            yield return new WaitForSeconds(1.4f);
+            Destroy(this.gameObject);
         }
     }
 

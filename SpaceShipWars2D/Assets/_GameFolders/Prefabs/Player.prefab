@@ -190,11 +190,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df238e25b1619904197f7be2a2b80c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _laserPrefab: {fileID: 6176208151013359884, guid: 8b8a1391d1137e244aeb52a0d3fbe3ec, type: 3}
   _sprites:
   - {fileID: 21300000, guid: b4a7c4d7c7ea8774d856f807418fcfae, type: 3}
   - {fileID: 21300000, guid: d90f0529d943d7b4a93b1f6c78e33de0, type: 3}
   - {fileID: 21300000, guid: 953fb2d9bad7a7b4e90795b2c522ea04, type: 3}
+  _animator: {fileID: 222525011}
+  _tailObject: {fileID: 4966656753916480706}
   _spriteRenderer: {fileID: 7725415894517321531}
   _playerStats: {fileID: 11400000, guid: c3f49338dd129fc4fb6be483899f774d, type: 2}
 --- !u!1 &7725415894517321529
@@ -207,6 +208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7725415894517321530}
   - component: {fileID: 7725415894517321531}
+  - component: {fileID: 222525011}
   m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
@@ -282,3 +284,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &222525011
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7725415894517321529}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 67c552bd72e514b4fa3fcf33ae1e48c8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
