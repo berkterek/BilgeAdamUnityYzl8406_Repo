@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae223506d6b6d98489423ae51f5da061, type: 3}
   m_Name: PlayerLaserStats
   m_EditorClassIdentifier: 
+  _dyingSprite: {fileID: 21300000, guid: fb8807702d886044d830299328ce3079, type: 3}
+  _delayTime: 0.5
   _moveSpeed: 10
   _isGoingUp: 1
