@@ -106,6 +106,11 @@ namespace SpaceShipWars2D.Controllers
         {
             StartCoroutine(_dying.DyingProcessAsync());
         }
+
+        public void SetTargets(Transform[] targets)
+        {
+            _targets = targets;
+        }
     }
 }
 

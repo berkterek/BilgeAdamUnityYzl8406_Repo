@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e3eb4097dc24b76a3950504cd25f833, type: 3}
   m_Name: EnemyStats_1_1
   m_EditorClassIdentifier: 
-  _moveSpeed: 3
+  _moveSpeed: 1.5
   _laserPrefab: {fileID: 1321829294744278552, guid: 37ed749ffef0aa54cae083dab2ac0949, type: 3}
   _minFireRate: 3
   _maxFireRate: 7
   _maxHealth: 50
   _maxDamage: 5
   _minDamage: 1
+  _dyingDelayTime: 1
