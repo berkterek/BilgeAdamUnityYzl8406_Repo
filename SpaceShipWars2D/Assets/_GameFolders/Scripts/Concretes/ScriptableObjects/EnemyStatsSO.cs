@@ -4,7 +4,7 @@ using UnityEngine;
 namespace SpaceShipWars2D.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "New Enemy Stats", menuName = "Bilge Adam/Stats/Enemy Stats")]
-    public class EnemyStatsSO : ScriptableObject, IAttackStats, IMovementStats, IHealthStats
+    public class EnemyStatsSO : ScriptableObject, IAttackStats, IMovementStats, IHealthStats, IDyingStats
     {
         [Header("Movements")]
         [Tooltip("This movement speed is players movement speed")]
@@ -17,11 +17,13 @@ namespace SpaceShipWars2D.ScriptableObjects
         [SerializeField] int _maxHealth = 100;
         [SerializeField] int _maxDamage = 10;
         [SerializeField] int _minDamage = 2;
+        [SerializeField] float _dyingDelayTime = 1f;
 
         public LaserController LaserPrefab => _laserPrefab;
         public float FireRate => Random.Range(_minFireRate, _maxFireRate);
         public int MaxDamage => Random.Range(_minDamage, _maxDamage);
         public float MoveSpeed => _moveSpeed;
         public int MaxHealth => _maxHealth;
+        public float DyingDelayTime => _dyingDelayTime;
     }
 }

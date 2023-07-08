@@ -36,7 +36,7 @@ namespace SpaceShipWars2D.Controllers
         {
             _inputReader = new InputReaderNormal();
             _health = new Health(_playerStats);
-            _dying = new DyingWithAnimation(new DyingAnimationDataEntity()
+            _dying = new DyingWithAnimation(new DyingDataEntity()
             {
                 Animator = _animator,
                 DyingStats = _playerStats,
