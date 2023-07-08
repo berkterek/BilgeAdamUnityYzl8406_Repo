@@ -18,7 +18,7 @@ namespace SpaceShipWars2D.Controllers
         {
             if (other.TryGetComponent(out LaserController laserController))
             {
-                _health.TakeDamage(10);
+                _health.TakeDamage(laserController.Damage);
             }
         }
     }

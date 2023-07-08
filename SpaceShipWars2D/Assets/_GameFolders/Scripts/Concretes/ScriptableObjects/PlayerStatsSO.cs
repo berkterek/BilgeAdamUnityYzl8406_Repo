@@ -14,9 +14,11 @@ namespace SpaceShipWars2D.ScriptableObjects
         [SerializeField] LaserController _laserPrefab;
         [SerializeField, Range(0.1f, 2f)] float _fireRate = 0.5f;
         [SerializeField] int _maxHealth = 100;
+        [SerializeField] int _maxDamage = 10;
 
         public float MoveSpeed => _moveSpeed;
         public float FireRate => _fireRate;
+        public int MaxDamage => _maxDamage;
         public LaserController LaserPrefab => _laserPrefab;
         public int MaxHealth => _maxHealth;
     }
@@ -25,6 +27,7 @@ namespace SpaceShipWars2D.ScriptableObjects
     {
         LaserController LaserPrefab { get; }
         float FireRate { get; }
+        int MaxDamage { get; }
     }
 
     public interface IMovementStats

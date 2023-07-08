@@ -20,6 +20,7 @@ namespace SpaceShipWars2D.Controllers
         IInputReader _inputReader;
         IAnimationController _animation;
         IFireHandler _fireHandler;
+        IHealth _health;
 
         void OnValidate()
         {
@@ -29,6 +30,7 @@ namespace SpaceShipWars2D.Controllers
         void Awake()
         {
             _inputReader = new InputReaderNormal();
+            _health = new Health(_playerStats);
             _mover = new MoveWithTranslate(new MovementData()
             {
                 Transform = this.transform,

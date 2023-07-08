@@ -31,7 +31,8 @@ namespace SpaceShipWars2D.Combats
         void Fire()
         {
             //Instantiate bizim prefab'lerimizi runtime veya editor ama daha cok tercih edilen runtime'dir prefab nesnelerimizi olusturmamizi saglayan method'tur
-            GameObject.Instantiate(_attackStats.LaserPrefab, _transform.position, Quaternion.identity);
+            var laserController = GameObject.Instantiate(_attackStats.LaserPrefab, _transform.position, Quaternion.identity);
+            laserController.Damage = _attackStats.MaxDamage;
         }
     }
 

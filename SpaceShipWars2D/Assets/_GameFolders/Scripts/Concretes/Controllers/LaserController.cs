@@ -12,6 +12,8 @@ namespace SpaceShipWars2D.Controllers
         [SerializeField] Transform _transform;
         [SerializeField] SpriteRenderer _bodySpriteRenderer;
 
+        public int Damage { get; set; }
+
         IMover _mover;
         Vector2 _direction;
         bool _isDead = false;

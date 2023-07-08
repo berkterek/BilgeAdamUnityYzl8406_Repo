@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SpaceShipWars2D.Combats
 {
-    public class Health
+    public class Health : IHealth
     {
         readonly IHealthStats _stats;
         int _currentHealth;
@@ -28,5 +28,10 @@ namespace SpaceShipWars2D.Combats
                 Debug.Log("Dying");
             }
         }
+    }
+
+    public interface IHealth
+    {
+        void TakeDamage(int damage);
     }
 }
