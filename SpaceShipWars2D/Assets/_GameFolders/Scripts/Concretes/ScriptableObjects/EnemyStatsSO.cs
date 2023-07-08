@@ -4,7 +4,7 @@ using UnityEngine;
 namespace SpaceShipWars2D.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "New Enemy Stats", menuName = "Bilge Adam/Stats/Enemy Stats")]
-    public class EnemyStats : ScriptableObject, IAttackStats, IMovementStats, IHealthStats
+    public class EnemyStatsSO : ScriptableObject, IAttackStats, IMovementStats, IHealthStats
     {
         [Header("Movements")]
         [Tooltip("This movement speed is players movement speed")]

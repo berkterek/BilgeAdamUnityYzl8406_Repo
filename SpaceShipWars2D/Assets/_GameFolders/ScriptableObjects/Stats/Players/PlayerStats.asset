@@ -17,3 +17,4 @@ MonoBehaviour:
   _fireRate: 0.2
   _maxHealth: 100
   _maxDamage: 10
+  _dyingDelayTime: 5

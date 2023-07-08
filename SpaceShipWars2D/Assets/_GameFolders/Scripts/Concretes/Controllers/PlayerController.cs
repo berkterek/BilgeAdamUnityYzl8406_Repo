@@ -24,8 +24,7 @@ namespace SpaceShipWars2D.Controllers
         IAnimationController _animation;
         IFireHandler _fireHandler;
         IHealth _health;
-
-        bool _isDead = false;
+        IDying _dying;
 
         void OnValidate()
         {
@@ -37,6 +36,13 @@ namespace SpaceShipWars2D.Controllers
         {
             _inputReader = new InputReaderNormal();
             _health = new Health(_playerStats);
+            _dying = new DyingWithAnimation(new DyingAnimationDataEntity()
+            {
+                Animator = _animator,
+                DyingStats = _playerStats,
+                TailObject = _tailObject,
+                MainGameObject = this.gameObject
+            });
             _mover = new MoveWithTranslate(new MovementData()
             {
                 Transform = this.transform,
@@ -67,7 +73,7 @@ namespace SpaceShipWars2D.Controllers
 
         void Update()
         {
-            if (_isDead) return;
+            if (_dying.IsDead) return;
             
             _mover.Tick(_inputReader.Direction);
             _movementBorder.Tick();
@@ -77,14 +83,14 @@ namespace SpaceShipWars2D.Controllers
 
         void FixedUpdate()
         {
-            if (_isDead) return;
+            if (_dying.IsDead) return;
             
             _mover.FixedTick();
         }
 
         void LateUpdate()
         {
-            if (_isDead) return;
+            if (_dying.IsDead) return;
             
             _animation.LateTick();
         }
@@ -98,17 +104,7 @@ namespace SpaceShipWars2D.Controllers
         
         void HandleOnDead()
         {
-            StartCoroutine(DyingAsync());
-        }
-
-        private IEnumerator DyingAsync()
-        {
-            _isDead = true;
-            _animator.SetTrigger("Dying");
-            _tailObject.SetActive(false);
-            _mover.Tick(Vector2.zero);
-            yield return new WaitForSeconds(1.4f);
-            Destroy(this.gameObject);
+            StartCoroutine(_dying.DyingProcessAsync());
         }
     }
 

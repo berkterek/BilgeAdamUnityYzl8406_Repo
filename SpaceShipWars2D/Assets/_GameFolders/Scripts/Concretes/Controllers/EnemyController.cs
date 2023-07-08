@@ -8,7 +8,7 @@ namespace SpaceShipWars2D.Controllers
 {
     public class EnemyController : MonoBehaviour,IEntityController
     {
-        [SerializeField] EnemyStats _stats;
+        [SerializeField] EnemyStatsSO _stats;
         
         IHealth _health;
         IFireHandler _fireHandler;
