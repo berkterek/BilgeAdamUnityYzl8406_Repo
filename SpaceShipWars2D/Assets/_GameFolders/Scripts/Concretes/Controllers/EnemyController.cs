@@ -1,7 +1,7 @@
-using System;
 using SpaceShipWars2D.Abstracts.Combats;
 using SpaceShipWars2D.Abstracts.Movements;
 using SpaceShipWars2D.Combats;
+using SpaceShipWars2D.Movements;
 using SpaceShipWars2D.ScriptableObjects;
 using UnityEngine;
 
@@ -14,11 +14,14 @@ namespace SpaceShipWars2D.Controllers
         [SerializeField] GameObject _tailObject;
         [SerializeField] Collider2D _collider2D;
         [SerializeField] EnemyStatsSO _stats;
-        
+        [SerializeField] Transform[] _targets;
+
+        Vector2 _direction;
         IHealth _health;
         IFireHandler _fireHandler;
         IMover _mover;
         IDying _dying;
+        int _index = 0;
 
         void OnValidate()
         {
@@ -42,6 +45,11 @@ namespace SpaceShipWars2D.Controllers
                 Collider2D = _collider2D,
                 MainGameObject = this.gameObject
             });
+            _mover = new MoveWithTransform(new MovementData()
+            {
+                Transform = this.transform,
+                MovementStats = _stats
+            });
         }
 
         void OnEnable()
@@ -59,11 +67,32 @@ namespace SpaceShipWars2D.Controllers
             if (_dying.IsDead) return;
 
             _fireHandler.Tick();
+
+            if (Vector2.Distance(_targets[_index].position, transform.position) > 0.1f)
+            {
+                Vector2 direction = _targets[_index].position - transform.position;
+                direction = direction.normalized;
+            
+                _mover.Tick(direction);    
+            }
+            else
+            {
+                _mover.Tick(Vector2.zero);
+                if (_index < _targets.Length - 1)
+                {
+                    _index++;
+                }
+                else
+                {
+                    Destroy(this.gameObject);
+                }
+            }
         }
 
         void FixedUpdate()
         {
             if (_dying.IsDead) return;
+            _mover.FixedTick();
         }
 
         void OnTriggerEnter2D(Collider2D other)
