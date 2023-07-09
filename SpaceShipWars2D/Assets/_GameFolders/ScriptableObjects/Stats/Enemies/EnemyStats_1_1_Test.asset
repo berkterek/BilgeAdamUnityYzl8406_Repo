@@ -16,7 +16,7 @@ MonoBehaviour:
   _laserPrefab: {fileID: 1321829294744278552, guid: 37ed749ffef0aa54cae083dab2ac0949, type: 3}
   _minFireRate: 0.1
   _maxFireRate: 2
-  _maxHealth: 50
+  _maxHealth: 20
   _maxDamage: 80
   _minDamage: 50
   _dyingDelayTime: 1
