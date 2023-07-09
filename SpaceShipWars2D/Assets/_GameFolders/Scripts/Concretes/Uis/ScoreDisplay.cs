@@ -15,14 +15,14 @@ namespace SpaceShipWars2D.Uis
     public abstract class BaseScoreDisplay : MonoBehaviour
     {
         [SerializeField] protected TMP_Text _scoreText;
-        [SerializeField] PlayerDataContainerSO _playerDataContainer;
+        [SerializeField] protected PlayerDataContainerSO _playerDataContainer;
 
         void OnValidate()
         {
             if (_scoreText == null) _scoreText = GetComponent<TMP_Text>();
         }
 
-        void Start()
+        protected virtual void Start()
         {
             _scoreText.SetText("0");
         }
