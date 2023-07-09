@@ -34,6 +34,6 @@ namespace SpaceShipWars2D.Uis
         {
             _scoreText.SetText(score.ToString());
         }
-    }    
+    }
 }
 

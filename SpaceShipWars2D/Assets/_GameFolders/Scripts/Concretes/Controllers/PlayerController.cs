@@ -24,7 +24,9 @@ namespace SpaceShipWars2D.Controllers
         IFireHandler _fireHandler;
         IHealth _health;
         IDying _dying;
-
+        
+        
+        
         void OnValidate()
         {
             if (_spriteRenderer == null) _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -63,11 +65,13 @@ namespace SpaceShipWars2D.Controllers
         void OnEnable()
         {
             _health.OnDead += HandleOnDead;
+            _health.OnDamageTaken += HandleOnDamageTaken;
         }
 
         void OnDisable()
         {
             _health.OnDead -= HandleOnDead;
+            _health.OnDamageTaken -= HandleOnDamageTaken;
         }
 
         void Update()
@@ -104,6 +108,11 @@ namespace SpaceShipWars2D.Controllers
         void HandleOnDead()
         {
             StartCoroutine(_dying.DyingProcessAsync());
+        }
+        
+        void HandleOnDamageTaken(int currentHealth)
+        {
+            _playerDataContainer.PlayerStats.HealthValueChange(currentHealth);
         }
     }
 

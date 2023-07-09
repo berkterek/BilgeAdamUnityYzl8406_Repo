@@ -23,6 +23,13 @@ namespace SpaceShipWars2D.ScriptableObjects
         public LaserController LaserPrefab => _laserPrefab;
         public int MaxHealth => _maxHealth;
         public float DyingDelayTime => _dyingDelayTime;
+
+        public event System.Action<int> OnHealthValueChanged;
+
+        public void HealthValueChange(int value)
+        {
+            OnHealthValueChanged?.Invoke(value);
+        }
     }
 
     public interface IAttackStats

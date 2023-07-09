@@ -410,6 +410,7 @@ GameObject:
   - component: {fileID: 1041710398}
   - component: {fileID: 1041710400}
   - component: {fileID: 1041710399}
+  - component: {fileID: 7816949533792022142}
   m_Layer: 5
   m_Name: HealthValueText
   m_TagString: Untagged
@@ -465,7 +466,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 999
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -534,6 +535,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7816949533792022142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041710397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6ee190016614005bba7bc59b970c42c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthText: {fileID: 1041710399}
+  _playerDataContainer: {fileID: 11400000, guid: 87da4922c4e65eb4089f3463d608ee01, type: 2}
 --- !u!1 &1167505351
 GameObject:
   m_ObjectHideFlags: 0
