@@ -5,6 +5,8 @@ namespace SpaceShipWars2D.Managers
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance { get; private set; }
+
+        public event System.Action OnGameOvered;
         
         void Awake()
         {
@@ -20,6 +22,11 @@ namespace SpaceShipWars2D.Managers
             {
                 Destroy(this.gameObject);
             }
+        }
+
+        public void GameOver()
+        {
+            OnGameOvered?.Invoke();
         }
     }    
 }

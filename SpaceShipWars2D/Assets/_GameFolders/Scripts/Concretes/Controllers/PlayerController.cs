@@ -3,6 +3,7 @@ using SpaceShipWars2D.Abstracts.Inputs;
 using SpaceShipWars2D.Abstracts.Movements;
 using SpaceShipWars2D.Combats;
 using SpaceShipWars2D.Inputs;
+using SpaceShipWars2D.Managers;
 using SpaceShipWars2D.Movements;
 using SpaceShipWars2D.ScriptableObjects;
 using UnityEngine;
@@ -24,8 +25,6 @@ namespace SpaceShipWars2D.Controllers
         IFireHandler _fireHandler;
         IHealth _health;
         IDying _dying;
-        
-        
         
         void OnValidate()
         {
@@ -107,6 +106,7 @@ namespace SpaceShipWars2D.Controllers
         
         void HandleOnDead()
         {
+            GameManager.Instance.GameOver();
             StartCoroutine(_dying.DyingProcessAsync());
         }
         

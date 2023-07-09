@@ -17,5 +17,8 @@ MonoBehaviour:
   _minFireRate: 0.1
   _maxFireRate: 2
   _maxHealth: 50
-  _maxDamage: 40
-  _minDamage: 20
+  _maxDamage: 80
+  _minDamage: 50
+  _dyingDelayTime: 1
+  _minScore: 5
+  _maxScore: 10
