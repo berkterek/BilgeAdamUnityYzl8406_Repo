@@ -91,7 +91,7 @@ MonoBehaviour:
   _animator: {fileID: 222525011}
   _tailObject: {fileID: 4966656753916480706}
   _spriteRenderer: {fileID: 7725415894517321531}
-  _playerStats: {fileID: 11400000, guid: c3f49338dd129fc4fb6be483899f774d, type: 2}
+  _playerDataContainer: {fileID: 11400000, guid: 87da4922c4e65eb4089f3463d608ee01, type: 2}
 --- !u!1 &7725415894517321529
 GameObject:
   m_ObjectHideFlags: 0

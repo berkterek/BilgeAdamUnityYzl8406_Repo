@@ -1,4 +1,3 @@
-using System.Collections;
 using SpaceShipWars2D.Abstracts.Combats;
 using SpaceShipWars2D.Abstracts.Inputs;
 using SpaceShipWars2D.Abstracts.Movements;
@@ -16,7 +15,7 @@ namespace SpaceShipWars2D.Controllers
         [SerializeField] Animator _animator;
         [SerializeField] GameObject _tailObject;
         [SerializeField] SpriteRenderer _spriteRenderer;
-        [SerializeField] PlayerStatsSO _playerStats;
+        [SerializeField] PlayerDataContainerSO _playerDataContainer;
 
         IMover _mover;
         IMovementBorder _movementBorder;
@@ -35,18 +34,18 @@ namespace SpaceShipWars2D.Controllers
         void Awake()
         {
             _inputReader = new InputReaderNormal();
-            _health = new Health(_playerStats);
+            _health = new Health(_playerDataContainer.PlayerStats);
             _dying = new DyingWithAnimation(new DyingDataEntity()
             {
                 Animator = _animator,
-                DyingStats = _playerStats,
+                DyingStats = _playerDataContainer.PlayerStats,
                 TailObject = _tailObject,
                 MainGameObject = this.gameObject
             });
             _mover = new MoveWithTranslate(new MovementData()
             {
                 Transform = this.transform,
-                MovementStats = _playerStats
+                MovementStats = _playerDataContainer.PlayerStats
             });
             _movementBorder = new MovementBorderForTransform(this.transform);
             _animation = new PlayerAnimationWithSprite(new PlayerAnimationWithSpriteData()
@@ -57,7 +56,7 @@ namespace SpaceShipWars2D.Controllers
             _fireHandler = new FireHandler(new FireData()
             {
                 Transform = this.transform,
-                AttackStats = _playerStats
+                AttackStats = _playerDataContainer.PlayerStats
             });
         }
 
