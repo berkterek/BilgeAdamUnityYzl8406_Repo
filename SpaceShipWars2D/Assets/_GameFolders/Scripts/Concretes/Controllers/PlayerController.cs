@@ -1,3 +1,4 @@
+using System;
 using SpaceShipWars2D.Abstracts.Combats;
 using SpaceShipWars2D.Abstracts.Inputs;
 using SpaceShipWars2D.Abstracts.Movements;
@@ -59,6 +60,11 @@ namespace SpaceShipWars2D.Controllers
                 Transform = this.transform,
                 AttackStats = _playerDataContainer.PlayerStats
             });
+        }
+
+        void Start()
+        {
+            _playerDataContainer.ScoreHolder.ResetCurrentScore();
         }
 
         void OnEnable()

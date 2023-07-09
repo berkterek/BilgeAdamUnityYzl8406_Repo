@@ -14,7 +14,7 @@ namespace SpaceShipWars2D.ScriptableObjects
 
         void OnEnable()
         {
-            _score = 0;
+            ResetCurrentScore();
         }
 
         public void IncreaseScore(int value)
@@ -43,6 +43,11 @@ namespace SpaceShipWars2D.ScriptableObjects
             {
                 return false;
             }
+        }
+
+        public void ResetCurrentScore()
+        {
+            _score = 0;
         }
     }
 }

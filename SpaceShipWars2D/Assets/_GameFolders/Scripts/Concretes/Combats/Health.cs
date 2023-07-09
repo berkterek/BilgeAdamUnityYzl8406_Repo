@@ -24,6 +24,9 @@ namespace SpaceShipWars2D.Combats
             if (IsDead) return;
             
             _currentHealth -= damage;
+
+            if (IsDead) _currentHealth = 0;
+            
             OnDamageTaken?.Invoke(_currentHealth);
 
             if (IsDead)
