@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: PlayerScoreHolder1
   m_EditorClassIdentifier: 
   _score: 0
+  _bestScore: 0
