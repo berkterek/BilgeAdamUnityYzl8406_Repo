@@ -6,6 +6,7 @@ namespace SpaceShipWars2D.ScriptableObjects
         menuName = "Bilge Adam/Holders/Score Holder")]
     public class ScoreHolderSO : ScriptableObject
     {
+        const string KEY = "Player_Score_Key";
         [SerializeField] int _score = 0;
         [SerializeField] int _bestScore;
 
@@ -14,6 +15,15 @@ namespace SpaceShipWars2D.ScriptableObjects
 
         void OnEnable()
         {
+            if (PlayerPrefs.HasKey(KEY))
+            {
+                _bestScore = PlayerPrefs.GetInt(KEY);
+            }
+            else
+            {
+                _bestScore = 0;    
+            }
+
             ResetCurrentScore();
         }
 
@@ -24,6 +34,7 @@ namespace SpaceShipWars2D.ScriptableObjects
             if (_score > _bestScore)
             {
                 _bestScore = _score;
+                PlayerPrefs.SetInt(KEY, _bestScore);
             }
             
             OnScoreValueChanged?.Invoke(_score, _bestScore);
