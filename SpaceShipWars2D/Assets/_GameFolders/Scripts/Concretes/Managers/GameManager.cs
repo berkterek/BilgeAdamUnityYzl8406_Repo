@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SpaceShipWars2D.Managers
 {
@@ -27,6 +28,16 @@ namespace SpaceShipWars2D.Managers
         public void GameOver()
         {
             OnGameOvered?.Invoke();
+        }
+
+        public void Play()
+        {
+            SceneManager.LoadScene("Game");
+        }
+
+        public void Menu()
+        {
+            SceneManager.LoadScene("Menu");
         }
     }    
 }

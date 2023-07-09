@@ -1,13 +1,20 @@
-using System;
 using SpaceShipWars2D.ScriptableObjects;
 using TMPro;
 using UnityEngine;
 
 namespace SpaceShipWars2D.Uis
 {
-    public class ScoreDisplay : MonoBehaviour
+    public class ScoreDisplay : BaseScoreDisplay
     {
-        [SerializeField] TMP_Text _scoreText;
+        protected override void HandleOnScoreChanged(int score, int bestScore)
+        {
+            _scoreText.SetText(score.ToString());
+        }
+    }
+
+    public abstract class BaseScoreDisplay : MonoBehaviour
+    {
+        [SerializeField] protected TMP_Text _scoreText;
         [SerializeField] PlayerDataContainerSO _playerDataContainer;
 
         void OnValidate()
@@ -29,11 +36,8 @@ namespace SpaceShipWars2D.Uis
         {
             _playerDataContainer.ScoreHolder.OnScoreValueChanged -= HandleOnScoreChanged;
         }
-        
-        void HandleOnScoreChanged(int score)
-        {
-            _scoreText.SetText(score.ToString());
-        }
+
+        protected abstract void HandleOnScoreChanged(int score, int bestScore);
     }
 }
 

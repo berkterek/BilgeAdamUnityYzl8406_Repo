@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 71172476}
   - component: {fileID: 71172475}
   - component: {fileID: 71172474}
+  - component: {fileID: 3641337974946568804}
   m_Layer: 5
   m_Name: PlayAgainButton
   m_TagString: Untagged
@@ -122,6 +123,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3641337974946568804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71172472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f8e53ecc0df9b40843beb111748dd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 71172474}
 --- !u!1 &79894077
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +492,7 @@ GameObject:
   m_Component:
   - component: {fileID: 440370921}
   - component: {fileID: 8176737624999703421}
+  - component: {fileID: 440370922}
   m_Layer: 5
   m_Name: GameOverObject
   m_TagString: Untagged
@@ -514,10 +529,24 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 440370920}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &440370922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440370920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ea99ea5b0ad6946a2b645c62f5e693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 3
+  _canvasGroup: {fileID: 8176737624999703421}
 --- !u!1 &505716512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,6 +1093,7 @@ GameObject:
   - component: {fileID: 890625630}
   - component: {fileID: 890625629}
   - component: {fileID: 890625628}
+  - component: {fileID: 8069468557074147109}
   m_Layer: 5
   m_Name: ReturnButton
   m_TagString: Untagged
@@ -1174,6 +1204,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8069468557074147109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890625626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a99a68e317464d9595fa71a3daf5233e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 890625628}
 --- !u!1 &1041710397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1450,6 +1493,7 @@ GameObject:
   - component: {fileID: 1661114371}
   - component: {fileID: 1661114373}
   - component: {fileID: 1661114372}
+  - component: {fileID: 1661114374}
   m_Layer: 5
   m_Name: BestScoreValue
   m_TagString: Untagged
@@ -1574,6 +1618,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1661114374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661114370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c3a11db98449d9b01034c7dfc3711f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scoreText: {fileID: 1661114372}
+  _playerDataContainer: {fileID: 11400000, guid: 87da4922c4e65eb4089f3463d608ee01, type: 2}
 --- !u!1 &1680360090
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,6 +1778,7 @@ GameObject:
   - component: {fileID: 1749150956}
   - component: {fileID: 1749150958}
   - component: {fileID: 1749150957}
+  - component: {fileID: 1749150959}
   m_Layer: 5
   m_Name: ScoreValue
   m_TagString: Untagged
@@ -1844,6 +1903,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1749150959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749150955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bddcb4cf9b6f704c963122c73b2b662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scoreText: {fileID: 1749150957}
+  _playerDataContainer: {fileID: 11400000, guid: 87da4922c4e65eb4089f3463d608ee01, type: 2}
 --- !u!1 &1843408490
 GameObject:
   m_ObjectHideFlags: 0

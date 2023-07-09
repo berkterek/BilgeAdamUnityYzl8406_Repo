@@ -9,7 +9,7 @@ namespace SpaceShipWars2D.ScriptableObjects
         [SerializeField] int _score = 0;
         [SerializeField] int _bestScore;
 
-        public event System.Action<int> OnScoreValueChanged;
+        public event System.Action<int,int> OnScoreValueChanged;
         public int BestScore => _bestScore;
 
         void OnEnable()
@@ -26,7 +26,7 @@ namespace SpaceShipWars2D.ScriptableObjects
                 _bestScore = _score;
             }
             
-            OnScoreValueChanged?.Invoke(_score);
+            OnScoreValueChanged?.Invoke(_score, _bestScore);
         }
 
         public bool DecreaseScore(int value)
@@ -36,7 +36,7 @@ namespace SpaceShipWars2D.ScriptableObjects
             if (result >= 0)
             {
                 _score = result;
-                OnScoreValueChanged?.Invoke(_score);
+                OnScoreValueChanged?.Invoke(_score, _bestScore);
                 return true;
             }
             else
