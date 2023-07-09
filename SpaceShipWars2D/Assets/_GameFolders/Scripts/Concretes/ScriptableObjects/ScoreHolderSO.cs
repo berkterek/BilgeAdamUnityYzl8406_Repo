@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace SpaceShipWars2D.ScriptableObjects
 {
@@ -7,12 +8,25 @@ namespace SpaceShipWars2D.ScriptableObjects
     public class ScoreHolderSO : ScriptableObject
     {
         [SerializeField] int _score = 0;
+        [SerializeField] int _bestScore;
 
         public event System.Action<int> OnScoreValueChanged;
+        public int BestScore => _bestScore;
+
+        void OnEnable()
+        {
+            _score = 0;
+        }
 
         public void IncreaseScore(int value)
         {
             _score += value;
+            
+            if (_score > _bestScore)
+            {
+                _bestScore = _score;
+            }
+            
             OnScoreValueChanged?.Invoke(_score);
         }
 
