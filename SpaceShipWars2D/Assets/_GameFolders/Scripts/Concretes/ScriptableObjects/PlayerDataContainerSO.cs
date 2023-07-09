@@ -6,15 +6,10 @@ namespace SpaceShipWars2D.ScriptableObjects
         menuName = "Bilge Adam/Data Container/Player Data Container")]
     public class PlayerDataContainerSO : ScriptableObject
     {
-        [SerializeField] int _score = 0;
+        [SerializeField] ScoreHolderSO _scoreHolder;
         [SerializeField] PlayerStatsSO _playerStats;
 
         public PlayerStatsSO PlayerStats => _playerStats;
-
-        public int Score
-        {
-            get => _score;
-            set => _score = value;
-        }
+        public ScoreHolderSO ScoreHolder => _scoreHolder;
     }
 }

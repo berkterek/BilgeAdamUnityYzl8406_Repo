@@ -9,6 +9,7 @@ namespace SpaceShipWars2D.Controllers
 {
     public class EnemyController : MonoBehaviour,IEntityController
     {
+        [SerializeField] PlayerDataContainerSO _playerDataContainer;
         [SerializeField] GameObject _fxObject;
         [SerializeField] GameObject _bodyObject;
         [SerializeField] GameObject _tailObject;
@@ -21,6 +22,7 @@ namespace SpaceShipWars2D.Controllers
         IFireHandler _fireHandler;
         IMover _mover;
         IDying _dying;
+        IScoreHandler _scoreHandler;
         int _index = 0;
 
         void OnValidate()
@@ -49,6 +51,11 @@ namespace SpaceShipWars2D.Controllers
             {
                 Transform = this.transform,
                 MovementStats = _stats
+            });
+            _scoreHandler = new ScoreHandler(new ScoreHandlerDataEntity()
+            {
+                ScoreStats = _stats,
+                PlayerDataContainer = _playerDataContainer 
             });
         }
 
@@ -104,6 +111,7 @@ namespace SpaceShipWars2D.Controllers
 
         void HandleOnDead()
         {
+            _scoreHandler.GiveScore();
             StartCoroutine(_dying.DyingProcessAsync());
         }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace SpaceShipWars2D.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "New Enemy Stats", menuName = "Bilge Adam/Stats/Enemy Stats")]
-    public class EnemyStatsSO : ScriptableObject, IAttackStats, IMovementStats, IHealthStats, IDyingStats
+    public class EnemyStatsSO : ScriptableObject, IAttackStats, IMovementStats, IHealthStats, IDyingStats,IScoreStats
     {
         [Header("Movements")]
         [Tooltip("This movement speed is players movement speed")]
@@ -18,6 +18,8 @@ namespace SpaceShipWars2D.ScriptableObjects
         [SerializeField] int _maxDamage = 10;
         [SerializeField] int _minDamage = 2;
         [SerializeField] float _dyingDelayTime = 1f;
+        [SerializeField] int _minScore = 5;
+        [SerializeField] int _maxScore = 10;
 
         public LaserController LaserPrefab => _laserPrefab;
         public float FireRate => Random.Range(_minFireRate, _maxFireRate);
@@ -25,5 +27,11 @@ namespace SpaceShipWars2D.ScriptableObjects
         public float MoveSpeed => _moveSpeed;
         public int MaxHealth => _maxHealth;
         public float DyingDelayTime => _dyingDelayTime;
+        public int Score => Random.Range(_minScore, _maxScore);
+    }
+
+    public interface IScoreStats
+    {
+        int Score { get; }
     }
 }

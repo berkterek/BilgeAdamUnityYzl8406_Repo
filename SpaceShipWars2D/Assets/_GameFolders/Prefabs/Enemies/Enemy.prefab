@@ -170,11 +170,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1707f1ac4ad479b4da6b07c54b581574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerDataContainer: {fileID: 11400000, guid: 87da4922c4e65eb4089f3463d608ee01, type: 2}
   _fxObject: {fileID: 1805893834857721959}
   _bodyObject: {fileID: 6093756876974135041}
   _tailObject: {fileID: 8626490398719181517}
   _collider2D: {fileID: 6093756877119103508}
   _stats: {fileID: 11400000, guid: bc192922eb680f54e8d36043795e66f7, type: 2}
+  _targets: []
 --- !u!1001 &6093756875504200374
 PrefabInstance:
   m_ObjectHideFlags: 0

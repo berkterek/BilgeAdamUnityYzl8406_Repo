@@ -20,3 +20,5 @@ MonoBehaviour:
   _maxDamage: 5
   _minDamage: 1
   _dyingDelayTime: 1
+  _minScore: 10
+  _maxScore: 10
