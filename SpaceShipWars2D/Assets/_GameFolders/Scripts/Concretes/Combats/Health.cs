@@ -1,4 +1,6 @@
-﻿using SpaceShipWars2D.ScriptableObjects;
+﻿using SpaceShipWars2D.Enums;
+using SpaceShipWars2D.Managers;
+using SpaceShipWars2D.ScriptableObjects;
 using UnityEngine;
 
 namespace SpaceShipWars2D.Combats
@@ -31,6 +33,7 @@ namespace SpaceShipWars2D.Combats
 
             if (IsDead)
             {
+                SoundManager.Instance.PlayWithName(SoundName.Dying);
                 OnDead?.Invoke();
             }
         }

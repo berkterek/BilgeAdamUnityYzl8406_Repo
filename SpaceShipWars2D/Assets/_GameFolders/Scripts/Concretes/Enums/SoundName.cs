@@ -8,6 +8,7 @@ namespace SpaceShipWars2D.Enums
     {
         PlayerLaser,
         EnemyLaser,
-        TakeHit
+        TakeHit,
+        Dying
     }    
 }
