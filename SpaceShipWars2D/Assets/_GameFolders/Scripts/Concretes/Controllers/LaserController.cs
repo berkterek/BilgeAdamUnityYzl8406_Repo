@@ -1,5 +1,7 @@
 using System.Collections;
 using SpaceShipWars2D.Abstracts.Movements;
+using SpaceShipWars2D.Enums;
+using SpaceShipWars2D.Managers;
 using SpaceShipWars2D.Movements;
 using SpaceShipWars2D.ScriptableObjects;
 using UnityEngine;
@@ -36,6 +38,7 @@ namespace SpaceShipWars2D.Controllers
         void Start()
         {
             _isDead = false;
+            SoundManager.Instance.PlayWithName(_stats.SoundName);
         }
 
         void OnTriggerEnter2D(Collider2D other)

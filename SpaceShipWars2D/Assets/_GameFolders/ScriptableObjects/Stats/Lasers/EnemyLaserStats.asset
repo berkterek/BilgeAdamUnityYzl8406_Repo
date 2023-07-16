@@ -16,3 +16,4 @@ MonoBehaviour:
   _delayTime: 0.5
   _moveSpeed: 10
   _isGoingUp: 0
+  _soundName: 1

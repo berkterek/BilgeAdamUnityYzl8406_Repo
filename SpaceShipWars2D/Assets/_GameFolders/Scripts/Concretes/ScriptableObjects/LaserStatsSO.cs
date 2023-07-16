@@ -1,3 +1,4 @@
+using SpaceShipWars2D.Enums;
 using UnityEngine;
 
 namespace SpaceShipWars2D.ScriptableObjects
@@ -13,10 +14,15 @@ namespace SpaceShipWars2D.ScriptableObjects
         [SerializeField] float _moveSpeed = 10f;
         [SerializeField] bool _isGoingUp;
 
+        [Header("Sounds")]
+        [SerializeField] SoundName _soundName;
+        
+
         public Vector2 OneWayDirection { get; private set; }
         public float MoveSpeed => _moveSpeed;
         public Sprite DyingSprite => _dyingSprite;
         public float DelayTime => _delayTime;
+        public SoundName SoundName => _soundName;
 
         void OnEnable()
         {
