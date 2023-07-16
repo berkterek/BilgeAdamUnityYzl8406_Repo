@@ -29,10 +29,6 @@ namespace SpaceShipWars2D.Controllers
         void OnEnable()
         {
             _isDead = false;
-        }
-
-        void Start()
-        {
             SoundManager.Instance.PlayWithName(_stats.SoundName);
         }
 
