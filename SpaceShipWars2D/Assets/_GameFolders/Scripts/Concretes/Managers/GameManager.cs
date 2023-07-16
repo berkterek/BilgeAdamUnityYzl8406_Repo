@@ -1,28 +1,17 @@
+using SpaceShipWars2D.Abstracts.Patterns;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace SpaceShipWars2D.Managers
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : SingletonMonoObject<GameManager>
     {
-        public static GameManager Instance { get; private set; }
-
         public event System.Action OnGameOvered;
         
-        void Awake()
+        protected override void Awake()
         {
             Application.targetFrameRate = 60;
-            transform.parent = null;
-
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(this.gameObject);
-            }
-            else
-            {
-                Destroy(this.gameObject);
-            }
+            base.Awake();
         }
 
         public void GameOver()
