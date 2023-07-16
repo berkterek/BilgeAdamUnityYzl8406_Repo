@@ -45,6 +45,7 @@ namespace SpaceShipWars2D.Controllers
         {
             if (!other.TryGetComponent(out IEntityController entityController)) return;
 
+            SoundManager.Instance.PlayWithName(SoundName.TakeHit);
             StartCoroutine(DyingAsync());
         }
 

@@ -7,6 +7,7 @@ namespace SpaceShipWars2D.Enums
     public enum SoundName
     {
         PlayerLaser,
-        EnemyLaser
+        EnemyLaser,
+        TakeHit
     }    
 }
