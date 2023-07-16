@@ -1,5 +1,6 @@
 ﻿using SpaceShipWars2D.Controllers;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace SpaceShipWars2D.ScriptableObjects
 {
@@ -10,8 +11,9 @@ namespace SpaceShipWars2D.ScriptableObjects
         [Tooltip("This movement speed is players movement speed")]
         [SerializeField, Range(1f,10f)] float _moveSpeed = 5f;
 
+        [FormerlySerializedAs("_laserPrefab")]
         [Header("Combats")]
-        [SerializeField] LaserController _laserPrefab;
+        [SerializeField] LaserStatsSO _laserStats;
         [SerializeField, Range(0.1f, 10f)] float _minFireRate = 0.5f;
         [SerializeField, Range(0.1f, 10f)] float _maxFireRate = 2f;
         [SerializeField] int _maxHealth = 100;
@@ -21,7 +23,7 @@ namespace SpaceShipWars2D.ScriptableObjects
         [SerializeField] int _minScore = 5;
         [SerializeField] int _maxScore = 10;
 
-        public LaserController LaserPrefab => _laserPrefab;
+        public LaserStatsSO LaserStats => _laserStats;
         public float FireRate => Random.Range(_minFireRate, _maxFireRate);
         public int MaxDamage => Random.Range(_minDamage, _maxDamage);
         public float MoveSpeed => _moveSpeed;

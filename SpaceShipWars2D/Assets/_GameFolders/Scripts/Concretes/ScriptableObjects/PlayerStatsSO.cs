@@ -1,5 +1,6 @@
 using SpaceShipWars2D.Controllers;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace SpaceShipWars2D.ScriptableObjects
 {
@@ -10,8 +11,9 @@ namespace SpaceShipWars2D.ScriptableObjects
         [Tooltip("This movement speed is players movement speed")]
         [SerializeField, Range(1f,10f)] float _moveSpeed = 5f;
 
+        [FormerlySerializedAs("_laserPrefab")]
         [Header("Combats")]
-        [SerializeField] LaserController _laserPrefab;
+        [SerializeField] LaserStatsSO _laserStats;
         [SerializeField, Range(0.1f, 2f)] float _fireRate = 0.5f;
         [SerializeField] int _maxHealth = 100;
         [SerializeField] int _maxDamage = 10;
@@ -20,7 +22,7 @@ namespace SpaceShipWars2D.ScriptableObjects
         public float MoveSpeed => _moveSpeed;
         public float FireRate => _fireRate;
         public int MaxDamage => _maxDamage;
-        public LaserController LaserPrefab => _laserPrefab;
+        public LaserStatsSO LaserStats => _laserStats;
         public int MaxHealth => _maxHealth;
         public float DyingDelayTime => _dyingDelayTime;
 
@@ -34,7 +36,7 @@ namespace SpaceShipWars2D.ScriptableObjects
 
     public interface IAttackStats
     {
-        LaserController LaserPrefab { get; }
+        LaserStatsSO LaserStats { get; }
         float FireRate { get; }
         int MaxDamage { get; }
     }

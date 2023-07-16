@@ -1,4 +1,5 @@
 using SpaceShipWars2D.Abstracts.Combats;
+using SpaceShipWars2D.Managers;
 using SpaceShipWars2D.ScriptableObjects;
 using UnityEngine;
 
@@ -34,8 +35,12 @@ namespace SpaceShipWars2D.Combats
         void Fire()
         {
             //Instantiate bizim prefab'lerimizi runtime veya editor ama daha cok tercih edilen runtime'dir prefab nesnelerimizi olusturmamizi saglayan method'tur
-            var laserController = GameObject.Instantiate(_attackStats.LaserPrefab, _transform.position, Quaternion.identity);
+            var laserController = LaserPoolManager.Instance.GetLaserFromPool();
+            laserController.SetLaserData(_attackStats.LaserStats);
+            laserController.gameObject.layer = _attackStats.LaserStats.LayerIndex;
             laserController.Damage = _attackStats.MaxDamage;
+            laserController.transform.position = _transform.position;
+            laserController.gameObject.SetActive(true);
         }
     }
 

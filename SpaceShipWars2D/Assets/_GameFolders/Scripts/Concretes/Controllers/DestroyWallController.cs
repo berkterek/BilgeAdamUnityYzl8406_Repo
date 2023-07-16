@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using SpaceShipWars2D.Managers;
 using UnityEngine;
 
 namespace SpaceShipWars2D.Controllers
@@ -8,7 +7,14 @@ namespace SpaceShipWars2D.Controllers
     {
         void OnTriggerEnter2D(Collider2D other)
         {
-            Destroy(other.gameObject);
+            if (other.TryGetComponent(out LaserController laserController))
+            {
+                LaserPoolManager.Instance.SetLaserToPool(laserController);
+            }
+            else
+            {
+                Destroy(other.gameObject);    
+            }
         }
     }    
 }

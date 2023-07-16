@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyStats_1_1_Test
   m_EditorClassIdentifier: 
   _moveSpeed: 3
-  _laserPrefab: {fileID: 1321829294744278552, guid: 37ed749ffef0aa54cae083dab2ac0949, type: 3}
+  _laserStats: {fileID: 11400000, guid: a25dd71f5413f7045ac82d70b62575aa, type: 2}
   _minFireRate: 0.1
   _maxFireRate: 2
   _maxHealth: 20

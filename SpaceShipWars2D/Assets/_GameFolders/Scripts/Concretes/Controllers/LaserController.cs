@@ -26,18 +26,13 @@ namespace SpaceShipWars2D.Controllers
             if (_bodySpriteRenderer == null) _bodySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
 
-        void Awake()
+        void OnEnable()
         {
-            _mover = new MoveWithTransform(new MovementData()
-            {
-                Transform = _transform,
-                MovementStats = _stats
-            });
+            _isDead = false;
         }
 
         void Start()
         {
-            _isDead = false;
             SoundManager.Instance.PlayWithName(_stats.SoundName);
         }
 
@@ -65,10 +60,21 @@ namespace SpaceShipWars2D.Controllers
         {
             _isDead = true;
             _mover.Tick(Vector2.zero);
-            _bodySpriteRenderer.sprite = _stats.DyingSprite;
-            _bodySpriteRenderer.sortingOrder = 10;
+            // _bodySpriteRenderer.sprite = _stats.DyingSprite;
+            // _bodySpriteRenderer.sortingOrder = 10;
             yield return new WaitForSeconds(_stats.DelayTime);
-            Destroy(this.gameObject);
+            LaserPoolManager.Instance.SetLaserToPool(this);
+        }
+
+        public void SetLaserData(LaserStatsSO stats)
+        {
+            _stats = stats;
+            
+            _mover = new MoveWithTransform(new MovementData()
+            {
+                Transform = _transform,
+                MovementStats = _stats
+            });
         }
     }
 }

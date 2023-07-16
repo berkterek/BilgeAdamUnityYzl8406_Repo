@@ -16,6 +16,9 @@ namespace SpaceShipWars2D.ScriptableObjects
 
         [Header("Sounds")]
         [SerializeField] SoundName _soundName;
+
+        [Header("Layer Info")] [SerializeField]
+        int _layerIndex = 0;
         
 
         public Vector2 OneWayDirection { get; private set; }
@@ -23,6 +26,7 @@ namespace SpaceShipWars2D.ScriptableObjects
         public Sprite DyingSprite => _dyingSprite;
         public float DelayTime => _delayTime;
         public SoundName SoundName => _soundName;
+        public int LayerIndex => _layerIndex;
 
         void OnEnable()
         {
