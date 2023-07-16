@@ -300,6 +300,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4046902174437466756, guid: d02a5ac0b46ee834baec401aa5a9bbc6, type: 3}
+      propertyPath: _prefab
+      value: 
+      objectReference: {fileID: 7202543144293540388, guid: 5200195b16e603342a6fd32ac03bbf3d, type: 3}
     - target: {fileID: 8016311344950150530, guid: d02a5ac0b46ee834baec401aa5a9bbc6, type: 3}
       propertyPath: m_Name
       value: '[LaserPoolManager]'

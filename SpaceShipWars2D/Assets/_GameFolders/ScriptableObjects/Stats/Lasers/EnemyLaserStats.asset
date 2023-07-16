@@ -16,4 +16,6 @@ MonoBehaviour:
   _delayTime: 0.5
   _moveSpeed: 10
   _isGoingUp: 0
+  _currentSprite: {fileID: 21300000, guid: e4a59eb7d688e9a4d8ae3e4deb8e369e, type: 3}
   _soundName: 1
+  _layerIndex: 9

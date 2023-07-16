@@ -13,13 +13,13 @@ namespace SpaceShipWars2D.ScriptableObjects
         [Header("Movement Values")]
         [SerializeField] float _moveSpeed = 10f;
         [SerializeField] bool _isGoingUp;
+        [SerializeField] Sprite _currentSprite;
 
         [Header("Sounds")]
         [SerializeField] SoundName _soundName;
 
         [Header("Layer Info")] [SerializeField]
         int _layerIndex = 0;
-        
 
         public Vector2 OneWayDirection { get; private set; }
         public float MoveSpeed => _moveSpeed;
@@ -27,6 +27,7 @@ namespace SpaceShipWars2D.ScriptableObjects
         public float DelayTime => _delayTime;
         public SoundName SoundName => _soundName;
         public int LayerIndex => _layerIndex;
+        public Sprite CurrentSprite => _currentSprite;
 
         void OnEnable()
         {

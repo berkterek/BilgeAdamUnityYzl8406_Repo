@@ -56,8 +56,8 @@ namespace SpaceShipWars2D.Controllers
         {
             _isDead = true;
             _mover.Tick(Vector2.zero);
-            // _bodySpriteRenderer.sprite = _stats.DyingSprite;
-            // _bodySpriteRenderer.sortingOrder = 10;
+            _bodySpriteRenderer.sprite = _stats.DyingSprite;
+            _bodySpriteRenderer.sortingOrder = 10;
             yield return new WaitForSeconds(_stats.DelayTime);
             LaserPoolManager.Instance.SetLaserToPool(this);
         }
@@ -65,6 +65,8 @@ namespace SpaceShipWars2D.Controllers
         public void SetLaserData(LaserStatsSO stats)
         {
             _stats = stats;
+            _bodySpriteRenderer.sprite = _stats.CurrentSprite;
+            _bodySpriteRenderer.sortingOrder = -1;
             
             _mover = new MoveWithTransform(new MovementData()
             {

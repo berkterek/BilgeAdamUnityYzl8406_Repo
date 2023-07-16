@@ -101,7 +101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3483702459222353368
 Transform:
   m_ObjectHideFlags: 0
@@ -158,3 +158,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stats: {fileID: 0}
   _transform: {fileID: 3483702459222353368}
+  _bodySpriteRenderer: {fileID: 3483702458949183725}
