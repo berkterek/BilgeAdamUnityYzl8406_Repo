@@ -1,4 +1,3 @@
-using System;
 using Platformer2D.Inputs;
 using UnityEngine;
 
@@ -6,9 +5,14 @@ namespace Platformer2D.Controllers
 {
     public class PlayerController : MonoBehaviour
     {
-        //Input => Horizontal input
-        //Movement => Left Right
+        [SerializeField] Transform _transform;
+
         InputReader _inputReader;
+
+        void OnValidate()
+        {
+            if (_transform == null) _transform = transform;
+        }
 
         void Awake()
         {
@@ -18,6 +22,9 @@ namespace Platformer2D.Controllers
         void Update()
         {
             Debug.Log(_inputReader.HorizontalInput);
+
+            //new Vector3(1f,0f,0f);
+            _transform.Translate(Time.deltaTime * _inputReader.HorizontalInput * Vector3.right);
         }
     }
 }
