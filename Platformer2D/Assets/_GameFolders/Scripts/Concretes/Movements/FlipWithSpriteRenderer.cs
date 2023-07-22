@@ -24,4 +24,21 @@ namespace Platformer2D.Movements
             }
         }
     }
+
+    public class FlipWithScale : IFlip
+    {
+        readonly Transform _transform;
+        
+        public FlipWithScale(Transform transform)
+        {
+            _transform = transform;
+        }
+        
+        public void LateUpdate(float value)
+        {
+            if (value == 0f) return;
+            
+            _transform.localScale = new Vector3(value, 1f, 1f);
+        }
+    }
 }
