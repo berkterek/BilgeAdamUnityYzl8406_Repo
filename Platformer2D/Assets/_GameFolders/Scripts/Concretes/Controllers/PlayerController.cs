@@ -1,4 +1,6 @@
+using Platformer2D.Abstracts.Movements;
 using Platformer2D.Inputs;
+using Platformer2D.Movements;
 using UnityEngine;
 
 namespace Platformer2D.Controllers
@@ -8,6 +10,7 @@ namespace Platformer2D.Controllers
         [SerializeField] Transform _transform;
 
         InputReader _inputReader;
+        IMover _mover;
 
         void OnValidate()
         {
@@ -17,14 +20,17 @@ namespace Platformer2D.Controllers
         void Awake()
         {
             _inputReader = new InputReader();
+            _mover = new MoveWithTranslate(_transform);
         }
 
         void Update()
         {
-            Debug.Log(_inputReader.HorizontalInput);
+            _mover.Tick(_inputReader.HorizontalInput);
+        }
 
-            //new Vector3(1f,0f,0f);
-            _transform.Translate(Time.deltaTime * _inputReader.HorizontalInput * Vector3.right);
+        void FixedUpdate()
+        {
+            _mover.FixedTick();
         }
     }
 }
