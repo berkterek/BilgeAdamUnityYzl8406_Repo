@@ -1,3 +1,4 @@
+using System;
 using Platformer2D.Abstracts.Movements;
 using Platformer2D.Inputs;
 using Platformer2D.Movements;
@@ -7,6 +8,8 @@ namespace Platformer2D.Controllers
 {
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField] int _maxJumpCounter = 2;
+        [SerializeField] int _currentJumpCounter = 0;
         [SerializeField] float _jumpForce = 500f;
         [SerializeField] Transform _transform;
         [SerializeField] Rigidbody2D _rigidbody2D;
@@ -31,22 +34,30 @@ namespace Platformer2D.Controllers
         {
             _mover.Tick(_inputReader.HorizontalInput);
 
-            if (_inputReader.IsJumpButtonDown)
+            if (_inputReader.IsJumpButtonDown && _currentJumpCounter < _maxJumpCounter)
             {
                 _isJump = true;
             }
-            //_isJump = _inputReader.IsJumpButtonDown;
         }
 
         void FixedUpdate()
         {
             _mover.FixedTick();
 
-            if (_isJump)
+            if (_isJump && _currentJumpCounter < _maxJumpCounter)
             {
                 _rigidbody2D.velocity = Vector2.zero;
                 _rigidbody2D.AddForce(Time.deltaTime * _jumpForce * Vector2.up);
                 _isJump = false;
+                _currentJumpCounter++;
+            }
+        }
+
+        void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.contacts[0].normal == Vector2.up)
+            {
+                _currentJumpCounter = 0;    
             }
         }
     }
