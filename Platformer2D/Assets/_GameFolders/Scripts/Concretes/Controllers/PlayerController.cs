@@ -18,6 +18,7 @@ namespace Platformer2D.Controllers
         InputReader _inputReader;
         IMover _mover;
         IFlip _flip;
+        IAnimation _animation;
         bool _isJump = false;
 
         void OnValidate()
@@ -32,6 +33,12 @@ namespace Platformer2D.Controllers
             _inputReader = new InputReader();
             _mover = new MoveWithTranslate(_transform);
             _flip = new FlipWithSpriteRenderer(_spriteRenderer);
+            _animation = new PlayerAnimation(new PlayerAnimationDataEntity()
+            {
+                Rigidbody2D = _rigidbody2D,
+                Animator = _animator,
+                InputReader = _inputReader
+            });
         }
 
         void Update()
@@ -48,6 +55,7 @@ namespace Platformer2D.Controllers
         {
             _mover.FixedTick();
 
+            //Jump'i moduler yapalim flip veya movement gibi
             if (_isJump && _currentJumpCounter < _maxJumpCounter)
             {
                 _rigidbody2D.velocity = Vector2.zero;
@@ -59,7 +67,7 @@ namespace Platformer2D.Controllers
 
         void LateUpdate()
         {
-            _animator.SetFloat("Speed", Mathf.Abs(_inputReader.HorizontalInput));
+            _animation.LateTick();
             _flip.LateUpdate(_inputReader.HorizontalInput);
         }
 
