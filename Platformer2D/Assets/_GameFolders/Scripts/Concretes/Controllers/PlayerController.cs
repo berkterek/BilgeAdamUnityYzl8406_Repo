@@ -1,4 +1,3 @@
-using System;
 using Platformer2D.Abstracts.Movements;
 using Platformer2D.Inputs;
 using Platformer2D.Movements;
@@ -14,21 +13,25 @@ namespace Platformer2D.Controllers
         [SerializeField] Transform _transform;
         [SerializeField] Rigidbody2D _rigidbody2D;
         [SerializeField] Animator _animator;
+        [SerializeField] SpriteRenderer _spriteRenderer;
 
         InputReader _inputReader;
         IMover _mover;
+        IFlip _flip;
         bool _isJump = false;
 
         void OnValidate()
         {
             if (_transform == null) _transform = transform;
             if (_rigidbody2D == null) _rigidbody2D = GetComponent<Rigidbody2D>();
+            if (_spriteRenderer == null) _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
 
         void Awake()
         {
             _inputReader = new InputReader();
             _mover = new MoveWithTranslate(_transform);
+            _flip = new FlipWithSpriteRenderer(_spriteRenderer);
         }
 
         void Update()
@@ -56,7 +59,8 @@ namespace Platformer2D.Controllers
 
         void LateUpdate()
         {
-            _animator.SetFloat("Speed", _inputReader.HorizontalInput);
+            _animator.SetFloat("Speed", Mathf.Abs(_inputReader.HorizontalInput));
+            _flip.LateUpdate(_inputReader.HorizontalInput);
         }
 
         void OnCollisionEnter2D(Collision2D other)
