@@ -13,6 +13,7 @@ namespace Platformer2D.Controllers
         [SerializeField] float _jumpForce = 500f;
         [SerializeField] Transform _transform;
         [SerializeField] Rigidbody2D _rigidbody2D;
+        [SerializeField] Animator _animator;
 
         InputReader _inputReader;
         IMover _mover;
@@ -53,11 +54,16 @@ namespace Platformer2D.Controllers
             }
         }
 
+        void LateUpdate()
+        {
+            _animator.SetFloat("Speed", _inputReader.HorizontalInput);
+        }
+
         void OnCollisionEnter2D(Collision2D other)
         {
             if (other.contacts[0].normal == Vector2.up)
             {
-                _currentJumpCounter = 0;    
+                _currentJumpCounter = 0;
             }
         }
     }
