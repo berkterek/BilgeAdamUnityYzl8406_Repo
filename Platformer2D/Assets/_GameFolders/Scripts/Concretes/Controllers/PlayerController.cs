@@ -26,6 +26,8 @@ namespace Platformer2D.Controllers
         void Update()
         {
             _mover.Tick(_inputReader.HorizontalInput);
+
+            Debug.Log(_inputReader.IsJumpButtonDown);
         }
 
         void FixedUpdate()

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Platformer2D.Inputs
@@ -10,6 +7,7 @@ namespace Platformer2D.Inputs
         readonly GameInputActions _input;
 
         public float HorizontalInput { get; private set; }
+        public bool IsJumpButtonDown => _input.Player.Jump.WasPressedThisFrame();
         
         public InputReader()
         {
