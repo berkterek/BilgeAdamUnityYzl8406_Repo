@@ -1,4 +1,7 @@
-﻿using Platformer2D.Controllers;
+﻿using Platformer2D.Abstracts.Managers;
+using Platformer2D.Abstracts.Movements;
+using Platformer2D.Controllers;
+using Platformer2D.Movements;
 using UnityEngine;
 
 namespace Platformer2D.Managers
@@ -7,14 +10,17 @@ namespace Platformer2D.Managers
     {
         readonly EnemyController _enemyController;
         readonly Vector3[] _targetPositions;
+        readonly IMover _mover;
         
         Vector3 _currentTargetPosition;
         Vector3 _currentDirection;
         int _targetIndex;
+        bool _isJump = false;
         
         public EnemyMoveManager(EnemyController enemyController)
         {
             _enemyController = enemyController;
+            _mover = new MoveWithTranslate(_enemyController.ThisTransform);
             
             _targetPositions = new Vector3[_enemyController.TargetTransforms.Length];
             for (int i = 0; i < _enemyController.TargetTransforms.Length; i++)
@@ -29,6 +35,7 @@ namespace Platformer2D.Managers
 
         public void Tick()
         {
+            
             if (Vector2.Distance(_enemyController.ThisTransform.position, _currentTargetPosition) < 0.3f)
             {
                 _targetIndex++;
@@ -45,19 +52,12 @@ namespace Platformer2D.Managers
 
         public void FixedTick()
         {
-            _enemyController.ThisTransform.Translate(2f * Time.deltaTime * _currentDirection);
+            _mover.FixedTick(2f * Time.deltaTime * _currentDirection);
         }
         
         public void LateTick()
         {
             _enemyController.Flip.LateTick(_currentDirection.x);
         }
-    }
-
-    public interface IMovementService
-    {
-        void Tick();
-        void FixedTick();
-        void LateTick();
     }
 }
