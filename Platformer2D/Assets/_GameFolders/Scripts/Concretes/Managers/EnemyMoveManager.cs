@@ -6,11 +6,13 @@ using UnityEngine;
 
 namespace Platformer2D.Managers
 {
+    //Business Layer
+    //bu yapinin gorevi if else ve saf datayi islemeketir
     public class EnemyMoveManager : IMovementService
     {
         readonly EnemyController _enemyController;
         readonly Vector3[] _targetPositions;
-        readonly IMover _mover;
+        readonly IMoverDal _mover;
         
         Vector3 _currentTargetPosition;
         Vector3 _currentDirection;

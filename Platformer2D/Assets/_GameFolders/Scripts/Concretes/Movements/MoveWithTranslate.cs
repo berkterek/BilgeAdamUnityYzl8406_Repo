@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Platformer2D.Movements
 {
-    public class MoveWithTranslate : IMover
+    public class MoveWithTranslate : IMoverDal
     {
         readonly Transform _transform;
 

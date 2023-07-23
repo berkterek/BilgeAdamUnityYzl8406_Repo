@@ -9,7 +9,7 @@ namespace Platformer2D.Managers
     public class PlayerMovementManager : IPlayerMoveService
     {
         readonly PlayerController _playerController;
-        readonly IMover _mover;
+        readonly IMoverDal _mover;
         readonly Rigidbody2D _rigidbody2D;
         
         Vector3 _direction;

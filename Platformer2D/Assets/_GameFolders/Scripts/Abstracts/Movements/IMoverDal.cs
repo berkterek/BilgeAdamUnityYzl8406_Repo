@@ -4,7 +4,9 @@ using UnityEngine;
 
 namespace Platformer2D.Abstracts.Movements
 {
-    public interface IMover
+    //Data Access Layer
+    //buranin gorevi saf data tutmak burda if else yapisi olmaz
+    public interface IMoverDal
     {
         void FixedTick(Vector3 direction);
     }    

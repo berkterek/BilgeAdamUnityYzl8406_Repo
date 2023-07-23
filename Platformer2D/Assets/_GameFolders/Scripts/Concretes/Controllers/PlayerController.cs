@@ -7,6 +7,8 @@ using UnityEngine;
 
 namespace Platformer2D.Controllers
 {
+    //User interface Layer
+    //Kullanici kisiinin iletiisimde bulunup business tarafini calistiridigi alandir
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] int _maxJumpCounter = 2;
