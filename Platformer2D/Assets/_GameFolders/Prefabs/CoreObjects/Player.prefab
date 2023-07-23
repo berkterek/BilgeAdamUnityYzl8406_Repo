@@ -200,9 +200,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c203c36f0508bcd40b55264f70bf86ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxJumpCounter: 1
+  _maxJumpCounter: 2
   _currentJumpCounter: 0
   _jumpForce: 20000
   _transform: {fileID: 1216348563478844665}
   _rigidbody2D: {fileID: 1216348563478844666}
   _animator: {fileID: 1216348561597320217}
+  _spriteRenderer: {fileID: 1216348561597320216}
