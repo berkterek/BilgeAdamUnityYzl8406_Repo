@@ -68,7 +68,7 @@ namespace Platformer2D.Controllers
         void LateUpdate()
         {
             _animation.LateTick();
-            _flip.LateUpdate(_inputReader.HorizontalInput);
+            _flip.LateTick(_inputReader.HorizontalInput);
         }
 
         void OnCollisionEnter2D(Collision2D other)

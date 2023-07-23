@@ -12,7 +12,7 @@ namespace Platformer2D.Movements
             _spriteRenderer = spriteRenderer;
         }
         
-        public void LateUpdate(float value)
+        public void LateTick(float value)
         {
             if (value > 0f)
             {
@@ -34,7 +34,7 @@ namespace Platformer2D.Movements
             _transform = transform;
         }
         
-        public void LateUpdate(float value)
+        public void LateTick(float value)
         {
             if (value == 0f) return;
             

@@ -6,7 +6,7 @@ namespace Platformer2D.Abstracts.Movements
 {
     public interface IFlip
     {
-        void LateUpdate(float value);
+        void LateTick(float value);
     }    
 }
 
