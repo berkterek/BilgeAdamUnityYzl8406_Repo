@@ -27,6 +27,7 @@ namespace Platformer2D.Managers
         {
             _direction = _playerController.InputReader.HorizontalInput * Vector3.right;
             
+            //Jump input
             if (_playerController.InputReader.IsJumpButtonDown && _currentJumpCounter < _playerController.MaxJumpCounter)
             {
                 _isJump = true;
@@ -36,6 +37,7 @@ namespace Platformer2D.Managers
         public void FixedTick()
         {
             //Jump'i moduler yapalim flip veya movement gibi
+            //Jump Process
             if (_isJump && _currentJumpCounter < _playerController.MaxJumpCounter)
             {
                 _rigidbody2D.velocity = Vector2.zero;
