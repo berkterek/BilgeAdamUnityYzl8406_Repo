@@ -3,6 +3,7 @@ using Platformer2D.Abstracts.Movements;
 using Platformer2D.Managers;
 using Platformer2D.Movements;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Platformer2D.Controllers
 {
@@ -13,14 +14,18 @@ namespace Platformer2D.Controllers
         [SerializeField] SpriteRenderer _spriteRenderer;
         [SerializeField] int _maxHealth;
         [SerializeField] int _currentHealth;
-        [SerializeField] int _damage = 1;
+        [SerializeField] int damageValue = 1;
 
         IMovementService _movementManager;
+        ITakeAndDealDamageCombatService _combatService;
         
         public IFlip Flip { get; private set; }
         public Transform ThisTransform => _thisTrasform;
         public Transform[] TargetTransforms => _targetTransforms;
-        public int Damage => _damage;
+        public int DamageValue => damageValue;
+        public int MaxHealth => _maxHealth;
+        public IHealthService HealthService => _combatService;
+        
 
         void OnValidate()
         {
@@ -32,6 +37,7 @@ namespace Platformer2D.Controllers
         {
             _movementManager = new EnemyMoveManager(this);
             Flip = new FlipWithSpriteRenderer(_spriteRenderer);
+            _combatService = new EnemyCombatManager(this);
         }
 
         void Start()

@@ -25,7 +25,7 @@ namespace Platformer2D.Controllers
 
         IAnimation _animation;
         IPlayerMoveService _movementManager;
-        ITakeAndDealDamageCombatService _combatService;
+        ITakeAndDealDamageCombatService _combatManager;
 
         public InputReader InputReader { get; private set; }
         public IFlip Flip { get; private set; }
@@ -53,7 +53,7 @@ namespace Platformer2D.Controllers
                 Animator = _animator,
                 InputReader = InputReader
             });
-            _combatService = new PlayerCombatManager(this);
+            _combatManager = new PlayerCombatManager(this);
         }
 
         void Update()
@@ -81,7 +81,7 @@ namespace Platformer2D.Controllers
 
                 if (contact.collider.TryGetComponent(out EnemyController enemyController))
                 {
-                    //_combatService.GiveDamageProcess();
+                    _combatManager.GiveDamageProcess(enemyController.HealthService);
                 }
             }
             else //Take Damage
