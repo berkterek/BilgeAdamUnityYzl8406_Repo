@@ -14,6 +14,7 @@ namespace Platformer2D.Controllers
         [SerializeField] SpriteRenderer _spriteRenderer;
         [SerializeField] int _maxHealth;
         [SerializeField] int _currentHealth;
+        [SerializeField] int _damage = 1;
 
         IMovementService _movementManager;
         
@@ -21,6 +22,7 @@ namespace Platformer2D.Controllers
 
         public Transform ThisTransform => _thisTrasform;
         public Transform[] TargetTransforms => _targetTransforms;
+        public int Damage => _damage;
 
         void OnValidate()
         {

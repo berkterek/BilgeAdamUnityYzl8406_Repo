@@ -89,8 +89,16 @@ namespace Platformer2D.Controllers
             {
                 if (contact.collider.TryGetComponent(out EnemyController enemyController))
                 {
-                    Debug.Log(
-                        $"<color=red>Player take damage from enemy => {contact.collider.gameObject.name}</color>");
+                    _currentHealth -= enemyController.Damage;
+                    if (_currentHealth <= 0)
+                    {
+                        Destroy(this.gameObject);
+                    }
+                    else
+                    {
+                        Debug.Log(
+                            $"<color=red>Player take damage from enemy => {contact.collider.gameObject.name}</color>");
+                    }
                 }
             }
         }
