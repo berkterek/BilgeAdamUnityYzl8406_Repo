@@ -20,6 +20,7 @@ namespace Platformer2D.Controllers
         [SerializeField] int _maxHealth = 3;
         [SerializeField] int _currentHealth;
         [SerializeField] int _damage = 1;
+        [SerializeField] Transform _lastCheckPoint;
 
         IAnimation _animation;
         IPlayerMoveService _movementManager;
@@ -98,8 +99,17 @@ namespace Platformer2D.Controllers
                     {
                         Debug.Log(
                             $"<color=red>Player take damage from enemy => {contact.collider.gameObject.name}</color>");
+                        _transform.position = _lastCheckPoint.position;
                     }
                 }
+            }
+        }
+
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.TryGetComponent(out DoorController doorController))
+            {
+                _lastCheckPoint = doorController.transform;
             }
         }
     }
