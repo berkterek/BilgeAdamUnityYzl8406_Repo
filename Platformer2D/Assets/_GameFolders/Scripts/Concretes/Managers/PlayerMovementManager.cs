@@ -10,6 +10,7 @@ namespace Platformer2D.Managers
     {
         readonly PlayerController _playerController;
         readonly IMoverDal _mover;
+        readonly IJump _jump;
         readonly Rigidbody2D _rigidbody2D;
         
         Vector3 _direction;
@@ -21,6 +22,7 @@ namespace Platformer2D.Managers
             _playerController = playerController;
             _mover = new MoveWithTranslate(_playerController.transform);
             _rigidbody2D = _playerController.GetComponent<Rigidbody2D>();
+            _jump = new JumpWithRigidbody(_rigidbody2D);
         }
 
         public void Tick()
@@ -36,12 +38,9 @@ namespace Platformer2D.Managers
 
         public void FixedTick()
         {
-            //Jump'i moduler yapalim flip veya movement gibi
-            //Jump Process
             if (_isJump && _currentJumpCounter < _playerController.MaxJumpCounter)
             {
-                _rigidbody2D.velocity = Vector2.zero;
-                _rigidbody2D.AddForce(Time.deltaTime * _playerController.JumpForce * Vector2.up);
+                _jump.FixedTick(_playerController.JumpForce);
                 _isJump = false;
                 _currentJumpCounter++;
             }

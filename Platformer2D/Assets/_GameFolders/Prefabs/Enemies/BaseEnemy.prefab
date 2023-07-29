@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 421353927955178400}
   - component: {fileID: 421353927955178401}
   - component: {fileID: 1105923954889677886}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,9 +50,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _thisTrasform: {fileID: 421353927955178407}
   _targetTransforms: []
-  _targetPositions: []
-  _currentTargetPosition: {x: 0, y: 0, z: 0}
-  _currentDirection: {x: 0, y: 0, z: 0}
   _spriteRenderer: {fileID: 421353928584373564}
 --- !u!50 &421353927955178401
 Rigidbody2D:
@@ -112,7 +109,7 @@ GameObject:
   - component: {fileID: 421353928584373566}
   - component: {fileID: 421353928584373564}
   - component: {fileID: 421353928584373565}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2761993913631863096}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Targets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +246,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2529555522697267965}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Target2
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
@@ -280,7 +277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 990731413403807942}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Target1
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}

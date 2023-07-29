@@ -67,6 +67,8 @@ namespace Platformer2D.Controllers
             if (other.contacts[0].normal == Vector2.up)
             {
                 _movementManager.ResetJumpCounter();
+                
+                
             }
         }
     }

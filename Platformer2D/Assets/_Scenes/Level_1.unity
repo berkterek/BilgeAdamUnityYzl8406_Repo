@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 155948084}
   - component: {fileID: 155948086}
   - component: {fileID: 155948085}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3802,7 +3802,7 @@ GameObject:
   - component: {fileID: 1685172035}
   - component: {fileID: 1685172034}
   - component: {fileID: 1685172036}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GreenMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6960,9 +6960,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1216348561597320294, guid: 4acbe072e6eac1848b46858a4524cf6d, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1216348563478844664, guid: 4acbe072e6eac1848b46858a4524cf6d, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216348563478844664, guid: 4acbe072e6eac1848b46858a4524cf6d, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1216348563478844664, guid: 4acbe072e6eac1848b46858a4524cf6d, type: 3}
       propertyPath: m_IsActive
