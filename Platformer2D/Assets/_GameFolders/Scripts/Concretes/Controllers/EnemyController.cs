@@ -1,3 +1,4 @@
+using System;
 using Platformer2D.Abstracts.Managers;
 using Platformer2D.Abstracts.Movements;
 using Platformer2D.Managers;
@@ -11,6 +12,8 @@ namespace Platformer2D.Controllers
         [SerializeField] Transform _thisTrasform;
         [SerializeField] Transform[] _targetTransforms;
         [SerializeField] SpriteRenderer _spriteRenderer;
+        [SerializeField] int _maxHealth;
+        [SerializeField] int _currentHealth;
 
         IMovementService _movementManager;
         
@@ -31,6 +34,11 @@ namespace Platformer2D.Controllers
             Flip = new FlipWithSpriteRenderer(_spriteRenderer);
         }
 
+        void Start()
+        {
+            _currentHealth = _maxHealth;
+        }
+
         void Update()
         {
             _movementManager.Tick();
@@ -44,6 +52,16 @@ namespace Platformer2D.Controllers
         void LateUpdate()
         {
             _movementManager.LateTick();
+        }
+
+        public void TakeDamage(int damage)
+        {
+            _currentHealth -= damage;
+
+            if (_currentHealth <= 0)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }

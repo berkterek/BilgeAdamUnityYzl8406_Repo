@@ -51,6 +51,8 @@ MonoBehaviour:
   _thisTrasform: {fileID: 421353927955178407}
   _targetTransforms: []
   _spriteRenderer: {fileID: 421353928584373564}
+  _maxHealth: 2
+  _currentHealth: 0
 --- !u!50 &421353927955178401
 Rigidbody2D:
   serializedVersion: 4

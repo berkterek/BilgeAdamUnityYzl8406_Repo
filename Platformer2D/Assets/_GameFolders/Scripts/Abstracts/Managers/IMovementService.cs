@@ -10,5 +10,6 @@
     public interface IPlayerMoveService : IMovementService
     {
         void ResetJumpCounter();
+        void AfterDealDamageJump();
     }
 }

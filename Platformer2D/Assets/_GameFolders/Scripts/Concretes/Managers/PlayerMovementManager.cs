@@ -57,5 +57,10 @@ namespace Platformer2D.Managers
         {
             _currentJumpCounter = 0;
         }
+
+        public void AfterDealDamageJump()
+        {
+            _jump.FixedTick(_playerController.JumpForce / 2f);
+        }
     }
 }

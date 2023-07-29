@@ -17,10 +17,13 @@ namespace Platformer2D.Controllers
         [SerializeField] Rigidbody2D _rigidbody2D;
         [SerializeField] Animator _animator;
         [SerializeField] SpriteRenderer _spriteRenderer;
+        [SerializeField] int _maxHealth = 3;
+        [SerializeField] int _currentHealth;
+        [SerializeField] int _damage = 1;
 
         IAnimation _animation;
         IPlayerMoveService _movementManager;
-        
+
         public InputReader InputReader { get; private set; }
         public IFlip Flip { get; private set; }
         public int MaxJumpCounter => _maxJumpCounter;
@@ -46,6 +49,11 @@ namespace Platformer2D.Controllers
             });
         }
 
+        void Start()
+        {
+            _currentHealth = _maxHealth;
+        }
+
         void Update()
         {
             _movementManager.Tick();
@@ -64,11 +72,26 @@ namespace Platformer2D.Controllers
 
         void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.contacts[0].normal == Vector2.up)
+            var contact = other.contacts[0];
+            if (contact.normal == Vector2.up) //Deal Damage
             {
                 _movementManager.ResetJumpCounter();
-                
-                
+
+                if (contact.collider.TryGetComponent(out EnemyController enemyController))
+                {
+                    Debug.Log(
+                        $"<color=green>Player deal damage to enemy => {contact.collider.gameObject.name}</color>");
+                    enemyController.TakeDamage(_damage);
+                    _movementManager.AfterDealDamageJump();
+                }
+            }
+            else //Take Damage
+            {
+                if (contact.collider.TryGetComponent(out EnemyController enemyController))
+                {
+                    Debug.Log(
+                        $"<color=red>Player take damage from enemy => {contact.collider.gameObject.name}</color>");
+                }
             }
         }
     }
