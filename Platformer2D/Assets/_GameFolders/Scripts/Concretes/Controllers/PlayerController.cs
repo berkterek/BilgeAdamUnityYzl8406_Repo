@@ -1,9 +1,11 @@
 using Platformer2D.Abstracts.Managers;
 using Platformer2D.Abstracts.Movements;
+using Platformer2D.Combats;
 using Platformer2D.Inputs;
 using Platformer2D.Managers;
 using Platformer2D.Movements;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Platformer2D.Controllers
 {
@@ -18,17 +20,20 @@ namespace Platformer2D.Controllers
         [SerializeField] Animator _animator;
         [SerializeField] SpriteRenderer _spriteRenderer;
         [SerializeField] int _maxHealth = 3;
-        [SerializeField] int _currentHealth;
-        [SerializeField] int _damage = 1;
+        [SerializeField] int _damageValue = 1;
         [SerializeField] Transform _lastCheckPoint;
 
         IAnimation _animation;
         IPlayerMoveService _movementManager;
+        ITakeAndDealDamageCombatService _combatService;
 
         public InputReader InputReader { get; private set; }
         public IFlip Flip { get; private set; }
         public int MaxJumpCounter => _maxJumpCounter;
         public float JumpForce => _jumpForce;
+        public int MaxHealth => _maxHealth;
+        public int DamageValueValue => _damageValue;
+        public IPlayerMoveService MovementManager => _movementManager;
 
         void OnValidate()
         {
@@ -48,11 +53,7 @@ namespace Platformer2D.Controllers
                 Animator = _animator,
                 InputReader = InputReader
             });
-        }
-
-        void Start()
-        {
-            _currentHealth = _maxHealth;
+            _combatService = new PlayerCombatManager(this);
         }
 
         void Update()
@@ -80,27 +81,24 @@ namespace Platformer2D.Controllers
 
                 if (contact.collider.TryGetComponent(out EnemyController enemyController))
                 {
-                    Debug.Log(
-                        $"<color=green>Player deal damage to enemy => {contact.collider.gameObject.name}</color>");
-                    enemyController.TakeDamage(_damage);
-                    _movementManager.AfterDealDamageJump();
+                    //_combatService.GiveDamageProcess();
                 }
             }
             else //Take Damage
             {
                 if (contact.collider.TryGetComponent(out EnemyController enemyController))
                 {
-                    _currentHealth -= enemyController.Damage;
-                    if (_currentHealth <= 0)
-                    {
-                        Destroy(this.gameObject);
-                    }
-                    else
-                    {
-                        Debug.Log(
-                            $"<color=red>Player take damage from enemy => {contact.collider.gameObject.name}</color>");
-                        _transform.position = _lastCheckPoint.position;
-                    }
+                    // _currentHealth -= enemyController.Damage;
+                    // if (_currentHealth <= 0)
+                    // {
+                    //     Destroy(this.gameObject);
+                    // }
+                    // else
+                    // {
+                    //     Debug.Log(
+                    //         $"<color=red>Player take damage from enemy => {contact.collider.gameObject.name}</color>");
+                    //     _transform.position = _lastCheckPoint.position;
+                    // }
                 }
             }
         }

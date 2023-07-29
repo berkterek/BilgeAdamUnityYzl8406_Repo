@@ -1,4 +1,3 @@
-using System;
 using Platformer2D.Abstracts.Managers;
 using Platformer2D.Abstracts.Movements;
 using Platformer2D.Managers;
@@ -19,7 +18,6 @@ namespace Platformer2D.Controllers
         IMovementService _movementManager;
         
         public IFlip Flip { get; private set; }
-
         public Transform ThisTransform => _thisTrasform;
         public Transform[] TargetTransforms => _targetTransforms;
         public int Damage => _damage;
