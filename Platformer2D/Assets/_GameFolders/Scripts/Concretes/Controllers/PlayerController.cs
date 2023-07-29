@@ -1,11 +1,9 @@
 using Platformer2D.Abstracts.Managers;
 using Platformer2D.Abstracts.Movements;
-using Platformer2D.Combats;
 using Platformer2D.Inputs;
 using Platformer2D.Managers;
 using Platformer2D.Movements;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Platformer2D.Controllers
 {
@@ -34,6 +32,7 @@ namespace Platformer2D.Controllers
         public int MaxHealth => _maxHealth;
         public int DamageValueValue => _damageValue;
         public IPlayerMoveService MovementManager => _movementManager;
+        public Transform LastCheckPoint => _lastCheckPoint;
 
         void OnValidate()
         {
@@ -81,24 +80,14 @@ namespace Platformer2D.Controllers
 
                 if (contact.collider.TryGetComponent(out EnemyController enemyController))
                 {
-                    _combatManager.GiveDamageProcess(enemyController.HealthService);
+                    _combatManager.GiveDamageProcess(enemyController.HealthManager);
                 }
             }
             else //Take Damage
             {
                 if (contact.collider.TryGetComponent(out EnemyController enemyController))
                 {
-                    // _currentHealth -= enemyController.Damage;
-                    // if (_currentHealth <= 0)
-                    // {
-                    //     Destroy(this.gameObject);
-                    // }
-                    // else
-                    // {
-                    //     Debug.Log(
-                    //         $"<color=red>Player take damage from enemy => {contact.collider.gameObject.name}</color>");
-                    //     _transform.position = _lastCheckPoint.position;
-                    // }
+                    _combatManager.TakeDamageProcess(enemyController.AttackManager.Damage);
                 }
             }
         }

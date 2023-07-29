@@ -1,5 +1,6 @@
 using Platformer2D.Abstracts.Managers;
 using Platformer2D.Abstracts.Movements;
+using Platformer2D.Combats;
 using Platformer2D.Managers;
 using Platformer2D.Movements;
 using UnityEngine;
@@ -24,8 +25,9 @@ namespace Platformer2D.Controllers
         public Transform[] TargetTransforms => _targetTransforms;
         public int DamageValue => damageValue;
         public int MaxHealth => _maxHealth;
-        public IHealthService HealthService => _combatService;
-        
+        public IHealthService HealthManager => _combatService;
+        public IAttackService AttackManager => _combatService;
+
 
         void OnValidate()
         {
