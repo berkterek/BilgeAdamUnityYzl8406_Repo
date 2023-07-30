@@ -7,6 +7,7 @@ namespace Platformer2D.Controllers
 {
     public class DoorController : MonoBehaviour
     {
+        [SerializeField] bool _canOpen;
         [SerializeField] Sprite[] _doorSprites;
         [SerializeField] SpriteRenderer[] _doorSpriteRenderers;
         [SerializeField] List<ItemType> _itemTypes;
@@ -14,6 +15,8 @@ namespace Platformer2D.Controllers
         void OnTriggerEnter2D(Collider2D other)
         {
             if (!other.TryGetComponent(out PlayerController _playerController)) return;
+
+            if (!_canOpen) return;
 
             List<ItemDataContainer> itemDataContainers = new List<ItemDataContainer>();
             foreach (var itemType in _itemTypes)
