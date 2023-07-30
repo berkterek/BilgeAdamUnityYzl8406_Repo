@@ -20,6 +20,7 @@ namespace Platformer2D.Controllers
         [SerializeField] int _maxHealth = 3;
         [SerializeField] int _damageValue = 1;
         [SerializeField] Transform _lastCheckPoint;
+        [SerializeField] int _coin = 0;
 
         IAnimation _animation;
         IPlayerMoveService _movementManager;
@@ -33,6 +34,11 @@ namespace Platformer2D.Controllers
         public int DamageValueValue => _damageValue;
         public IPlayerMoveService MovementManager => _movementManager;
         public Transform LastCheckPoint => _lastCheckPoint;
+        public int Coin
+        {
+            get => _coin;
+            set => _coin = value;
+        }
 
         void OnValidate()
         {
