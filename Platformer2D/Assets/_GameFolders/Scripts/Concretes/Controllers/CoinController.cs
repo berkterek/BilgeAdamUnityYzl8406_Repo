@@ -11,7 +11,6 @@ namespace Platformer2D.Controllers
             if (!other.TryGetComponent(out PlayerController playerController)) return;
 
             playerController.Coin += _coinValue;
-            Debug.Log("Player Coin => " + playerController.Coin);
             Destroy(this.gameObject);
         }
     }    
