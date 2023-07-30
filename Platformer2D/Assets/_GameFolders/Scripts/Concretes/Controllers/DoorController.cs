@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Platformer2D.Enums;
+using Platformer2D.Managers;
 using Platformer2D.ScriptableObjects;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace Platformer2D.Controllers
 {
     public class DoorController : MonoBehaviour
     {
+        [SerializeField] int _levelValue = 1;
         [SerializeField] bool _canOpen = false;
         [SerializeField] bool _canEnter = false;
         [SerializeField] Collider2D _openCollider;
@@ -19,11 +21,13 @@ namespace Platformer2D.Controllers
         {
             if (!other.TryGetComponent(out PlayerController playerController)) return;
 
-            OpenDoorProcess(playerController);
+            if (_canEnter)
+            {
+                Debug.Log("Player can enter door and pass to next level");
+                GameManager.Instance.LevelChangedProcess(0);
+            }
 
-            if (!_canEnter) return;
-            
-            Debug.Log("Player can enter door and pass to next level");
+            OpenDoorProcess(playerController);
         }
 
         private void OpenDoorProcess(PlayerController playerController)
@@ -57,9 +61,11 @@ namespace Platformer2D.Controllers
                     _doorSpriteRenderers[i].sprite = _doorSprites[i];
                 }
 
+                _canOpen = false;
+                
                 _openCollider.enabled = false;
                 _enterCollider.enabled = true;
-                _canOpen = false;
+                
                 _canEnter = true;
             }
         }
