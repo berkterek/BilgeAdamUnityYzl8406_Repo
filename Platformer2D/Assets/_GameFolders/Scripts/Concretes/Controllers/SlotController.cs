@@ -1,4 +1,5 @@
-﻿using Platformer2D.ScriptableObjects;
+﻿using Platformer2D.Enums;
+using Platformer2D.ScriptableObjects;
 using UnityEngine;
 
 namespace Platformer2D.Controllers
@@ -9,6 +10,7 @@ namespace Platformer2D.Controllers
         [SerializeField] SpriteRenderer _spriteRenderer;
 
         public bool IsSlotEmpty => _spriteRenderer.sprite == null || _itemDataContainer == null;
+        public ItemType ItemType => _itemDataContainer.ItemType;
 
         void OnValidate()
         {

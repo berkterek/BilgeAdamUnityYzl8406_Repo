@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be75845bb4b7453b88276b2f1aa7ef8f, type: 3}
-  m_Name: KeyItemDataContainer
+  m_Name: DoorKeyItemDataContainer
   m_EditorClassIdentifier: 
   _itemName: Objective Key
   _itemSprite: {fileID: 21300000, guid: 29857d31ec924fc49970e29ffced08ca, type: 3}
