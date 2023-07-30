@@ -21,6 +21,7 @@ namespace Platformer2D.Controllers
         [SerializeField] int _damageValue = 1;
         [SerializeField] Transform _lastCheckPoint;
         [SerializeField] int _coin = 0;
+        [SerializeField] InventoryController _inventoryController;
 
         IAnimation _animation;
         IPlayerMoveService _movementManager;
@@ -34,6 +35,7 @@ namespace Platformer2D.Controllers
         public int DamageValueValue => _damageValue;
         public IPlayerMoveService MovementManager => _movementManager;
         public Transform LastCheckPoint => _lastCheckPoint;
+        public InventoryController Inventory => _inventoryController;
         public int Coin
         {
             get => _coin;

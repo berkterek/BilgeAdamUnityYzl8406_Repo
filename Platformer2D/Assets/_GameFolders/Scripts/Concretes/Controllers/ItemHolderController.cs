@@ -17,7 +17,8 @@ namespace Platformer2D.Controllers
         {
             if (!other.TryGetComponent(out PlayerController playerController)) return;
             
-            
+            playerController.Inventory.SetItemToSlot(_itemData);
+            Destroy(this.gameObject);
         }
     }    
 }
