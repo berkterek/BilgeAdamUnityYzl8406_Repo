@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using Platformer2D.Enums;
 using Platformer2D.Managers;
 using Platformer2D.ScriptableObjects;
@@ -8,6 +9,9 @@ namespace Platformer2D.Controllers
 {
     public class DoorController : MonoBehaviour
     {
+        //const sabit degistirilemez demek daha hazili calismasi icin boyle bir yontem kullandik
+        const string DOOR_KEY = "Door_Data_";
+        
         [SerializeField] int _uniqueID = 0;
         [SerializeField] int _levelValue = 1;
         [SerializeField] bool _canOpen = false;
@@ -20,7 +24,7 @@ namespace Platformer2D.Controllers
 
         void Start()
         {
-            
+            LoadData();
             
             if (_canEnter)
             {
@@ -42,7 +46,7 @@ namespace Platformer2D.Controllers
 
         private void OpenDoorProcess(PlayerController playerController)
         {
-            if (!_canOpen) return;
+            if (!_canOpen || _canEnter) return;
 
             List<ItemDataContainer> itemDataContainers = new List<ItemDataContainer>();
             foreach (var itemType in _itemTypes)
@@ -68,7 +72,31 @@ namespace Platformer2D.Controllers
                 OpenDoorProcess();
                 
                 _canEnter = true;
+                SaveData();
             }
+        }
+
+        private void LoadData()
+        {
+            if (PlayerPrefs.HasKey(DOOR_KEY + _uniqueID))
+            {
+                var dataEntityCore = PlayerPrefs.GetString(DOOR_KEY + _uniqueID);
+                DoorSaveData dataEntity = JsonConvert.DeserializeObject<DoorSaveData>(dataEntityCore);
+
+                if (dataEntity.UniqueID == _uniqueID) _canEnter = dataEntity.CanEnter;
+            }
+        }
+
+        private void SaveData()
+        {
+            DoorSaveData dataEntity = new DoorSaveData()
+            {
+                UniqueID = _uniqueID,
+                CanEnter = _canEnter
+            };
+
+            var dataEntityCore = JsonConvert.SerializeObject(dataEntity);
+            PlayerPrefs.SetString(DOOR_KEY+_uniqueID, dataEntityCore);
         }
 
         private void OpenDoorProcess()
@@ -84,5 +112,11 @@ namespace Platformer2D.Controllers
             _openCollider.enabled = false;
             _enterCollider.enabled = true;
         }
+    }
+
+    public struct DoorSaveData
+    {
+        public int UniqueID { get; set; }
+        public bool CanEnter { get; set; }
     }
 }
