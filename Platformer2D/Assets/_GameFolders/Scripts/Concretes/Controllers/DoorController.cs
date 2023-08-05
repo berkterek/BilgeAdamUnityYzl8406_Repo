@@ -13,7 +13,6 @@ namespace Platformer2D.Controllers
         const string DOOR_KEY = "Door_Data_";
         
         [SerializeField] int _uniqueID = 0;
-        [SerializeField] string _levelName;
         [SerializeField] int _levelValue = 1;
         [SerializeField] bool _canOpen = false;
         [SerializeField] bool _canEnter = false;
