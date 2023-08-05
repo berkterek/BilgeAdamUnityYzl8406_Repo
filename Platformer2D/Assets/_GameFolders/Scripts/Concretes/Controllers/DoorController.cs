@@ -13,14 +13,19 @@ namespace Platformer2D.Controllers
         const string DOOR_KEY = "Door_Data_";
         
         [SerializeField] int _uniqueID = 0;
+        [SerializeField] string _levelName;
         [SerializeField] int _levelValue = 1;
         [SerializeField] bool _canOpen = false;
         [SerializeField] bool _canEnter = false;
+        [SerializeField] Transform _playerSetPoint;
         [SerializeField] Collider2D _openCollider;
         [SerializeField] Collider2D _enterCollider;
         [SerializeField] Sprite[] _doorSprites;
         [SerializeField] SpriteRenderer[] _doorSpriteRenderers;
         [SerializeField] List<ItemType> _itemTypes;
+        
+        public bool CanEnter => _canEnter;
+        public Vector3 Point => _playerSetPoint.position;
 
         void Start()
         {
@@ -38,7 +43,11 @@ namespace Platformer2D.Controllers
 
             if (_canEnter)
             {
-                GameManager.Instance.LevelChangedProcess(_levelValue);
+                GameManager.Instance.LevelChangedProcess(new DoorSendData()
+                {
+                    Point = _playerSetPoint.position,
+                    LevelIncreaseData = _levelValue
+                });
             }
 
             OpenDoorProcess(playerController);
