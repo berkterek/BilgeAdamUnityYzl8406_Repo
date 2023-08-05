@@ -8,6 +8,7 @@ namespace Platformer2D.Controllers
 {
     public class DoorController : MonoBehaviour
     {
+        [SerializeField] int _uniqueID = 0;
         [SerializeField] int _levelValue = 1;
         [SerializeField] bool _canOpen = false;
         [SerializeField] bool _canEnter = false;
@@ -16,6 +17,16 @@ namespace Platformer2D.Controllers
         [SerializeField] Sprite[] _doorSprites;
         [SerializeField] SpriteRenderer[] _doorSpriteRenderers;
         [SerializeField] List<ItemType> _itemTypes;
+
+        void Start()
+        {
+            
+            
+            if (_canEnter)
+            {
+                OpenDoorProcess();
+            }
+        }
 
         void OnTriggerEnter2D(Collider2D other)
         {
@@ -54,19 +65,24 @@ namespace Platformer2D.Controllers
 
             if (_itemTypes.Count <= 0)
             {
-                Debug.Log("Start door open process");
-                for (int i = 0; i < _doorSpriteRenderers.Length; i++)
-                {
-                    _doorSpriteRenderers[i].sprite = _doorSprites[i];
-                }
-
-                _canOpen = false;
-                
-                _openCollider.enabled = false;
-                _enterCollider.enabled = true;
+                OpenDoorProcess();
                 
                 _canEnter = true;
             }
+        }
+
+        private void OpenDoorProcess()
+        {
+            Debug.Log("Start door open process");
+            for (int i = 0; i < _doorSpriteRenderers.Length; i++)
+            {
+                _doorSpriteRenderers[i].sprite = _doorSprites[i];
+            }
+
+            _canOpen = false;
+                
+            _openCollider.enabled = false;
+            _enterCollider.enabled = true;
         }
     }
 }

@@ -3010,7 +3010,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1259898982}
   m_Layer: 0
-  m_Name: Level_1Objects
+  m_Name: Level_3Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7142,6 +7142,14 @@ PrefabInstance:
     - target: {fileID: 1903431811563873569, guid: b5fe8cad752a6dd448c8549a7e685204, type: 3}
       propertyPath: _canOpen
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903431811563873569, guid: b5fe8cad752a6dd448c8549a7e685204, type: 3}
+      propertyPath: _canEnter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903431811563873569, guid: b5fe8cad752a6dd448c8549a7e685204, type: 3}
+      propertyPath: _uniqueID
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1903431811563873569, guid: b5fe8cad752a6dd448c8549a7e685204, type: 3}
       propertyPath: _levelValue
