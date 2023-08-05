@@ -2,16 +2,47 @@ using UnityEngine;
 
 namespace Platformer2D.Controllers
 {
-    public class CoinController : MonoBehaviour
+    public class CoinController : BaseCoinController
     {
-        [SerializeField] int _coinValue = 1;
-
         void OnTriggerEnter2D(Collider2D other)
         {
             if (!other.TryGetComponent(out PlayerController playerController)) return;
 
-            playerController.Coin += _coinValue;
-            Destroy(this.gameObject);
+            SetCoinToPlayer(playerController);
         }
-    }    
+
+        protected override void AfterCoinState()
+        {
+            base.AfterCoinState();
+            if (_currentCoinCounter <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+    }
+
+    public abstract class BaseCoinController : MonoBehaviour
+    {
+        [SerializeField] int _coinValue = 1;
+        [SerializeField] int _maxCoinCounter = 1;
+
+        protected int _currentCoinCounter = 0;
+
+        void Start()
+        {
+            _currentCoinCounter = _maxCoinCounter;
+        }
+
+        protected void SetCoinToPlayer(PlayerController playerController)
+        {
+            playerController.Coin += _coinValue;
+
+            AfterCoinState();
+        }
+
+        protected virtual void AfterCoinState()
+        {
+            _currentCoinCounter--;
+        }
+    }
 }
