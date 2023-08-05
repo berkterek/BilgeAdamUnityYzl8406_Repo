@@ -23,8 +23,7 @@ namespace Platformer2D.Controllers
 
             if (_canEnter)
             {
-                Debug.Log("Player can enter door and pass to next level");
-                GameManager.Instance.LevelChangedProcess(0);
+                GameManager.Instance.LevelChangedProcess(_levelValue);
             }
 
             OpenDoorProcess(playerController);
