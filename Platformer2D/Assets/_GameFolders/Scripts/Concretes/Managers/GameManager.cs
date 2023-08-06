@@ -112,6 +112,17 @@ namespace Platformer2D.Managers
             Application.Quit();
             Debug.Log(nameof(Application.Quit));
         }
+
+        public void ReturnMenu()
+        {
+            SceneManager.LoadScene("Menu");
+        }
+
+        public void PlayAgain()
+        {
+            ReturnMenu();
+            StartCoroutine(StartGameAsync());
+        }
     }
 
     public struct DoorSendData
