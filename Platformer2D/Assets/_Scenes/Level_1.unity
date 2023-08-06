@@ -7861,6 +7861,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1903431811563873569, guid: b5fe8cad752a6dd448c8549a7e685204, type: 3}
+      propertyPath: _levelName
+      value: Level_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903431811563873569, guid: b5fe8cad752a6dd448c8549a7e685204, type: 3}
       propertyPath: _itemTypes.Array.size
       value: 1
       objectReference: {fileID: 0}

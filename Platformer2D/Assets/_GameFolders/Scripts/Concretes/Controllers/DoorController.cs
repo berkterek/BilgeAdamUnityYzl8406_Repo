@@ -11,7 +11,8 @@ namespace Platformer2D.Controllers
     {
         //const sabit degistirilemez demek daha hazili calismasi icin boyle bir yontem kullandik
         const string DOOR_KEY = "Door_Data_";
-        
+
+        [SerializeField] string _levelName;
         [SerializeField] int _uniqueID = 0;
         [SerializeField] int _levelValue = 1;
         [SerializeField] bool _canOpen = false;
@@ -45,7 +46,8 @@ namespace Platformer2D.Controllers
                 GameManager.Instance.LevelChangedProcess(new DoorSendData()
                 {
                     Point = _playerSetPoint.position,
-                    LevelIncreaseData = _levelValue
+                    LevelIncreaseData = _levelValue,
+                    LevelName = _levelName
                 });
             }
 

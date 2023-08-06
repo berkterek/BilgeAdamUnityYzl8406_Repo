@@ -12,18 +12,13 @@ namespace Platformer2D.Managers
 
         public static GameManager Instance { get; private set; }
 
-        int _currentSceneIndex;
-        
+        int _nextSceneIndex;
+
         void Awake()
         {
             Singleton();
             Application.targetFrameRate = 60;
             _levelLastPoints = new Dictionary<int, Vector3>();
-        }
-
-        void Start()
-        {
-            _currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         }
 
         private void Singleton()
@@ -41,23 +36,28 @@ namespace Platformer2D.Managers
 
         public void LevelChangedProcess(DoorSendData doorSaveData)
         {
-            if (_levelLastPoints.ContainsKey(_currentSceneIndex))
+            int currentIndex = _nextSceneIndex;
+            if (_levelLastPoints.ContainsKey(currentIndex))
             {
-                _levelLastPoints[_currentSceneIndex] = doorSaveData.Point;
+                _levelLastPoints[_nextSceneIndex] = doorSaveData.Point;
             }
             else
             {
-                _levelLastPoints.Add(_currentSceneIndex, doorSaveData.Point);    
+                _levelLastPoints.Add(_nextSceneIndex, doorSaveData.Point);
             }
-            
-            _currentSceneIndex += doorSaveData.LevelIncreaseData;
-            
-            StartCoroutine(LoadSceneWithIndexAsync(_currentSceneIndex));
+
+            _nextSceneIndex += doorSaveData.LevelIncreaseData;
+
+            StartCoroutine(LoadSceneWithIndexAsync(_nextSceneIndex, currentIndex, doorSaveData.LevelName));
         }
 
-        IEnumerator LoadSceneWithIndexAsync(int nextIndex)
+        IEnumerator LoadSceneWithIndexAsync(int nextIndex, int currentIndex, string levelName)
         {
-            yield return SceneManager.LoadSceneAsync(nextIndex);
+            yield return SceneManager.UnloadSceneAsync(currentIndex);
+            yield return SceneManager.LoadSceneAsync(nextIndex, LoadSceneMode.Additive);
+            
+            var scene = SceneManager.GetSceneByName(levelName);
+            yield return SceneManager.SetActiveScene(scene);
 
             PlayerController playerController = null;
             while (playerController == null)
@@ -75,11 +75,20 @@ namespace Platformer2D.Managers
 
                 foreach (var doorController in doorControllers)
                 {
-                    if(!doorController.CanEnter) continue;
+                    if (!doorController.CanEnter) continue;
 
                     Vector3 point = doorController.Point;
                     playerController.transform.position = point;
-                    _levelLastPoints.Add(nextIndex, point);
+
+                    if (_levelLastPoints.ContainsKey(nextIndex))
+                    {
+                        _levelLastPoints[nextIndex] = point;
+                    }
+                    else
+                    {
+                        _levelLastPoints.Add(nextIndex, point);    
+                    }
+                    
                 }
             }
         }
@@ -103,12 +112,12 @@ namespace Platformer2D.Managers
             Application.Quit();
             Debug.Log(nameof(Application.Quit));
         }
-    }    
-    
+    }
+
     public struct DoorSendData
     {
         public int LevelIncreaseData { get; set; }
         public Vector3 Point { get; set; }
+        public string LevelName { get; set; }
     }
 }
-
