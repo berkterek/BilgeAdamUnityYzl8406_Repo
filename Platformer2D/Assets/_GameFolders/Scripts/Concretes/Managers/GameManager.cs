@@ -83,6 +83,17 @@ namespace Platformer2D.Managers
                 }
             }
         }
+
+        public void StartGame()
+        {
+            Debug.Log(nameof(StartGame));
+        }
+
+        public void ExitGame()
+        {
+            Application.Quit();
+            Debug.Log(nameof(Application.Quit));
+        }
     }    
     
     public struct DoorSendData
