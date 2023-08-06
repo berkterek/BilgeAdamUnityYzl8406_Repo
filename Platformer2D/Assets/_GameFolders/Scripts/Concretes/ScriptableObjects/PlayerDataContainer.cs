@@ -2,18 +2,26 @@ using UnityEngine;
 
 namespace Platformer2D.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "New Player Data Container", menuName = "Bilge Adam/Data Container/Player Data Container")]
+    [CreateAssetMenu(fileName = "New Player Data Container",
+        menuName = "Bilge Adam/Data Container/Player Data Container")]
     public class PlayerDataContainer : ScriptableObject
     {
         [SerializeField] Coin _coin;
 
         public Coin Coin => _coin;
 
+        public event System.Action<int, int> OnHealthValueChanged;
+
         void OnEnable()
         {
 #if UNITY_EDITOR
             _coin.ResetValueOnEditor();
 #endif
+        }
+
+        public void HealthValueChanged(int currentHealth, int maxHealth)
+        {
+            OnHealthValueChanged?.Invoke(currentHealth, maxHealth);
         }
     }
 
@@ -50,7 +58,5 @@ namespace Platformer2D.ScriptableObjects
             _coinValue = 0;
         }
 #endif
-        
     }
 }
-

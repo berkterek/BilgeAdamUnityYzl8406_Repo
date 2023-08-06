@@ -35,6 +35,7 @@ namespace Platformer2D.Managers
         
         void HandleOnCurrentHealthValueChanged(int currentHealth, int maxHealth)
         {
+            _playerController.PlayerDataContainer.HealthValueChanged(currentHealth, maxHealth);
             if (currentHealth <= 0)
             {
                 GameObject.Destroy(_playerController.gameObject);
