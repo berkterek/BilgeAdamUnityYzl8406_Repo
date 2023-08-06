@@ -87,6 +87,15 @@ namespace Platformer2D.Managers
         public void StartGame()
         {
             Debug.Log(nameof(StartGame));
+            StartCoroutine(StartGameAsync());
+        }
+
+        private IEnumerator StartGameAsync()
+        {
+            yield return SceneManager.LoadSceneAsync("Level_1", LoadSceneMode.Additive);
+            yield return SceneManager.UnloadSceneAsync("Menu");
+            yield return SceneManager.SetActiveScene(SceneManager.GetSceneByName("Level_1"));
+            yield return SceneManager.LoadSceneAsync("GameUi", LoadSceneMode.Additive);
         }
 
         public void ExitGame()
