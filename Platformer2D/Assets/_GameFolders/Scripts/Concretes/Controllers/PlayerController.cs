@@ -3,6 +3,7 @@ using Platformer2D.Abstracts.Movements;
 using Platformer2D.Inputs;
 using Platformer2D.Managers;
 using Platformer2D.Movements;
+using Platformer2D.ScriptableObjects;
 using UnityEngine;
 
 namespace Platformer2D.Controllers
@@ -11,6 +12,7 @@ namespace Platformer2D.Controllers
     //Kullanici kisiinin iletiisimde bulunup business tarafini calistiridigi alandir
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField] PlayerDataContainer _playerDataContainer;
         [SerializeField] int _maxJumpCounter = 2;
         [SerializeField] float _jumpForce = 500f;
         [SerializeField] Transform _transform;
@@ -20,7 +22,6 @@ namespace Platformer2D.Controllers
         [SerializeField] int _maxHealth = 3;
         [SerializeField] int _damageValue = 1;
         [SerializeField] Transform _lastCheckPoint;
-        [SerializeField] int _coin = 0;
         [SerializeField] InventoryController _inventoryController;
 
         IAnimation _animation;
@@ -36,11 +37,7 @@ namespace Platformer2D.Controllers
         public IPlayerMoveService MovementManager => _movementManager;
         public Transform LastCheckPoint => _lastCheckPoint;
         public InventoryController Inventory => _inventoryController;
-        public int Coin
-        {
-            get => _coin;
-            set => _coin = value;
-        }
+        public PlayerDataContainer PlayerDataContainer => _playerDataContainer;
 
         void OnValidate()
         {

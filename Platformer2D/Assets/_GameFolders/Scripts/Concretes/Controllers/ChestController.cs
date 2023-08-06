@@ -26,15 +26,12 @@ namespace Platformer2D.Controllers
         {
             if (!other.TryGetComponent(out PlayerController playerController)) return;
 
-            int result = playerController.Coin - _spendCoin;
-
-            if (result < 0) return;
-
-            playerController.Coin = result;
-            _coinValueText.SetText(_spendCoin.ToString());
-
-            _animator.SetTrigger("Open");
-            _collider2D.enabled = false;
+            if (playerController.PlayerDataContainer.Coin.DecreaseCoinProcess(_spendCoin))
+            {
+                _coinValueText.SetText("0");
+                _animator.SetTrigger("Open");
+                _collider2D.enabled = false;                
+            }
         }
     }
 }

@@ -35,7 +35,7 @@ namespace Platformer2D.Controllers
 
         protected void SetCoinToPlayer(PlayerController playerController)
         {
-            playerController.Coin += _coinValue;
+            playerController.PlayerDataContainer.Coin.IncreaseCoinProcess(_coinValue);
 
             AfterCoinState();
         }
