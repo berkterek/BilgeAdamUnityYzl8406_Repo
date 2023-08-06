@@ -12,7 +12,7 @@ namespace Platformer2D.Managers
 
         public static GameManager Instance { get; private set; }
 
-        int _nextSceneIndex;
+        int _nextSceneIndex = 1;
 
         void Awake()
         {
