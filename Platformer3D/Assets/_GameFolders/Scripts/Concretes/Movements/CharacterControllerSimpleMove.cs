@@ -7,7 +7,7 @@ namespace Platformer3D.Movements
     public class CharacterControllerSimpleMove : IMover
     {
         readonly CharacterController _characterController;
-        readonly PlayerController _playerController;
+        readonly CharacterControllerPlayerController _playerController;
 
         Vector3 _movement;
         
@@ -31,7 +31,7 @@ namespace Platformer3D.Movements
     public class CharacterControllerMove : IMover
     {
         readonly CharacterController _characterController;
-        readonly PlayerController _playerController;
+        readonly CharacterControllerPlayerController _playerController;
         private bool groundedPlayer;
         private float jumpHeight = 1.0f;
         private float gravityValue = -9.81f;
@@ -72,7 +72,7 @@ namespace Platformer3D.Movements
     public class RigidbodyMove : IMover
     {
         readonly Rigidbody _rigidbody;
-        readonly PlayerController _playerController;
+        readonly CharacterControllerPlayerController _playerController;
         
         Vector3 _movement;
 
@@ -100,7 +100,7 @@ namespace Platformer3D.Movements
 
     public class TranslateMove : IMover
     {
-        readonly PlayerController _playerController;
+        readonly CharacterControllerPlayerController _playerController;
         readonly Transform _transform;
         
         Vector3 _movement;
@@ -126,6 +126,6 @@ namespace Platformer3D.Movements
     {
         public CharacterController CharacterController;
         public Rigidbody Rigidbody;
-        public PlayerController PlayerController;
+        public CharacterControllerPlayerController PlayerController;
     }
 }
