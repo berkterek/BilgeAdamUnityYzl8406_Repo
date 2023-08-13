@@ -8,11 +8,14 @@ namespace ThirdPersonSample2.Controller
     {
         [SerializeField] Animator _animator;
         [SerializeField] GameObject _pistolObject;
+        [SerializeField] GameObject _rifleObject;
         [SerializeField] InputActionReference _weapon0Reference;
         [SerializeField] InputActionReference _weapon1Reference;
         [SerializeField] InputActionReference _weapon2Reference;
         [SerializeField] bool _isWeaponChangeRoutineContinue = false;
         [SerializeField] float _lerpSpeed = 1f;
+
+        int _lastIndex;
 
         void OnEnable()
         {
@@ -75,27 +78,39 @@ namespace ThirdPersonSample2.Controller
             if (_weapon2Reference.action.WasPressedThisFrame())
             {
                 Debug.Log("Weapon 2 selected");
+                StartCoroutine(RifleSelectionAsync());
             }
         }
 
         private IEnumerator PistolSelectionAsync()
         {
-            _isWeaponChangeRoutineContinue = true;
-            
-            _pistolObject.gameObject.SetActive(true);
+            yield return SelectWeapon(_pistolObject, 1);
+        }
 
-            float weigth = 0f;
+        private IEnumerator RifleSelectionAsync()
+        {
+            yield return SelectWeapon(_rifleObject, 2);
+        }
+
+        private IEnumerator SelectWeapon(GameObject weaponObject, int layerIndex)
+        {
+            _isWeaponChangeRoutineContinue = true;
+            _lastIndex = layerIndex;
+            
+            weaponObject.gameObject.SetActive(true);
+            
+            float weight = 0f;
             float timer = 0f;
-            while (weigth < 0.99f)
+            while (weight < 0.99f)
             {
                 timer += Time.deltaTime * _lerpSpeed;
-                weigth = Mathf.Lerp(weigth, 1f, timer);
-                _animator.SetLayerWeight(1, weigth);
+                weight = Mathf.Lerp(weight, 1f, timer);
+                _animator.SetLayerWeight(layerIndex, weight);
                 yield return null;
             }
 
-            weigth = 1f;
-            _animator.SetLayerWeight(1, weigth);
+            weight = 1f;
+            _animator.SetLayerWeight(layerIndex, weight);
             
             _isWeaponChangeRoutineContinue = false;
         }
@@ -105,19 +120,20 @@ namespace ThirdPersonSample2.Controller
             _isWeaponChangeRoutineContinue = true;
             
             _pistolObject.gameObject.SetActive(false);
+            _rifleObject.SetActive(false);
             
-            float weigth = 1f;
+            float weight = 1f;
             float timer = 0f;
-            while (weigth > 0.1f)
+            while (weight > 0.1f)
             {
                 timer += Time.deltaTime * _lerpSpeed;
-                weigth = Mathf.Lerp(weigth, 0f, timer);
-                _animator.SetLayerWeight(1, weigth);
+                weight = Mathf.Lerp(weight, 0f, timer);
+                _animator.SetLayerWeight(_lastIndex, weight);
                 yield return null;
             }
 
-            weigth = 0f;
-            _animator.SetLayerWeight(1, weigth);
+            weight = 0f;
+            _animator.SetLayerWeight(1, weight);
             
             _isWeaponChangeRoutineContinue = false;
         }

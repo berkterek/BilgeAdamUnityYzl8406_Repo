@@ -191,12 +191,6 @@ ReflectionProbe:
   m_UseOcclusionCulling: 1
   m_Importance: 1
   m_CustomBakedTexture: {fileID: 0}
---- !u!1 &576936509 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7766635708302817524, guid: 26949d84a6038c6419f94cefcf9f030c,
-    type: 3}
-  m_PrefabInstance: {fileID: 777307614204090855}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &746329221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1102,19 +1096,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThirdPersonPlayer
       objectReference: {fileID: 0}
-    - target: {fileID: 7766635708302817524, guid: 26949d84a6038c6419f94cefcf9f030c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7305604537794684961, guid: 26949d84a6038c6419f94cefcf9f030c,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7763702002652054942}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26949d84a6038c6419f94cefcf9f030c, type: 3}
 --- !u!1 &2114283753834967212
 GameObject:
@@ -1270,38 +1255,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!1 &3897242803697943901 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7305604537794684961, guid: 26949d84a6038c6419f94cefcf9f030c,
-    type: 3}
-  m_PrefabInstance: {fileID: 777307614204090855}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &7763702002652054941 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3951781791481923205, guid: 26949d84a6038c6419f94cefcf9f030c,
-    type: 3}
-  m_PrefabInstance: {fileID: 777307614204090855}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7763702002652054942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3897242803697943901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4377f3cb5d29c7845a1e06fcf70572a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 7763702002652054941}
-  _pistolObject: {fileID: 576936509}
-  _weapon0Reference: {fileID: 7750440036028959077, guid: 4419d82f33d36e848b3ed5af4c8da37e,
-    type: 3}
-  _weapon1Reference: {fileID: -7499631325250888855, guid: 4419d82f33d36e848b3ed5af4c8da37e,
-    type: 3}
-  _weapon2Reference: {fileID: -1242299805828910552, guid: 4419d82f33d36e848b3ed5af4c8da37e,
-    type: 3}
 --- !u!1001 &8345070700268369567
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7110789415142964751}
   m_Layer: 0
-  m_Name: Mkb16_prefab
+  m_Name: Mkb16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
