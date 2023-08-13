@@ -95,8 +95,18 @@ namespace ThirdPersonSample2.Controller
         private IEnumerator SelectWeapon(GameObject weaponObject, int layerIndex)
         {
             _isWeaponChangeRoutineContinue = true;
-            _lastIndex = layerIndex;
+
+            if (layerIndex != 0)
+            { 
+                float lastWeight = _animator.GetLayerWeight(_lastIndex);
+                if (lastWeight > 0.1f)
+                {
+                    yield return NoWeaponSelectionAsync();
+                }
+            }
             
+            _lastIndex = layerIndex;
+
             weaponObject.gameObject.SetActive(true);
             
             float weight = 0f;
