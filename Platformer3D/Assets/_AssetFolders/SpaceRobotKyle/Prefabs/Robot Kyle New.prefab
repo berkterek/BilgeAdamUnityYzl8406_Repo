@@ -188,7 +188,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6004199822772218049}
+  m_Father: {fileID: 180627527710595791}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 5.658, y: 0, z: 0}
 --- !u!1 &680063168431266143
@@ -1128,6 +1128,39 @@ Transform:
   m_Father: {fileID: 2345555311535516529}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4425758607301924175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 180627527710595791}
+  m_Layer: 0
+  m_Name: CameraFollow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &180627527710595791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4425758607301924175}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4400808327448374910}
+  - {fileID: 2730916724789542965}
+  m_Father: {fileID: 6004199822772218049}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4545296133165197421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,11 +1471,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7052188786598436491}
   m_LocalRotation: {x: 0.04935261, y: -0, z: -0, w: 0.99878144}
-  m_LocalPosition: {x: 0.105, y: 1.63, z: 0.54}
+  m_LocalPosition: {x: 0.105, y: 1.63, z: 0.5400001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6004199822772218049}
+  m_Father: {fileID: 180627527710595791}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 5.658, y: 0, z: 0}
 --- !u!1 &7085936391200165617
@@ -1541,10 +1574,9 @@ Transform:
   m_Children:
   - {fileID: 8939872425345163601}
   - {fileID: 3833593366548901587}
-  - {fileID: 4400808327448374910}
-  - {fileID: 2730916724789542965}
+  - {fileID: 180627527710595791}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8499423279563232980
 Animator:
@@ -1579,6 +1611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0026f88974fe1446917380605c06cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characterController: {fileID: 252277911827088684}
 --- !u!143 &252277911827088684
 CharacterController:
   m_ObjectHideFlags: 0

@@ -8,11 +8,13 @@ namespace Platformer3D.Sample2.Controllers
     public class RobotKyleController : MonoBehaviour
     {
         [SerializeField] CharacterController _characterController;
-
+        [SerializeField] Transform _verticalRotationTransform;
+        
         IMover _mover;
         RotationMover _rotationMover;
         InputReader _inputReader;
-        
+
+        public Transform VerticalRotationTransform => _verticalRotationTransform;
 
         void OnValidate()
         {
