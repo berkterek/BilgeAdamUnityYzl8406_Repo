@@ -7,8 +7,10 @@ namespace Platformer3D.Inputs
     {
         readonly GameInputActions _input;
 
-        public Vector3 Direction { get; set; }
-        public Vector2 RotationDirection { get; set; }
+        public Vector3 Direction { get; private set; }
+        public Vector2 RotationDirection { get; private set; }
+        public bool CanFireSinglePress => _input.Player.Fire.WasPressedThisFrame();
+        public bool CanFireContinue { get; private set; }
 
         //Constructor
         public InputReader()
@@ -20,7 +22,10 @@ namespace Platformer3D.Inputs
 
             _input.Player.Look.performed += HandleOnPlayerLook;
             _input.Player.Look.canceled += HandleOnPlayerLook;
-            
+
+            _input.Player.FireContinue.performed += HandleOnFireContinue;
+            _input.Player.FireContinue.canceled += HandleOnFireContinue;
+
             _input.Enable();
         }
 
@@ -39,6 +44,18 @@ namespace Platformer3D.Inputs
         void HandleOnPlayerLook(InputAction.CallbackContext context)
         {
             RotationDirection = context.ReadValue<Vector2>();
+        }
+        
+        void HandleOnFireContinue(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                CanFireContinue = true;    
+            }
+            else
+            {
+                CanFireContinue = false;
+            }
         }
     }
 }
